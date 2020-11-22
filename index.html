@@ -25,15 +25,18 @@
 </head>
 
 <body>
+    <video autoplay muted loop id="videoBackground" src="media/champion-xayahrakan-animated.webm"><source src="rain.mp4" type="video/mp4"></video>
     <div id="news"></div>
     <div id="league">
-        <input id="summonerNameInput" value="AhrilyBadAhri">
-        <select id="regionDropdown">
-            <option>na1</option>
-            <option>eun1</option>
-            <option>euw1</option>
-        </select>
-        <button id="summonerSearchButton">GO</button>
+        <div id=search>
+            <input id="summonerNameInput" value="AhrilyBadAhri">
+            <select id="regionDropdown">
+                <option>na1</option>
+                <option>eun1</option>
+                <option>euw1</option>
+            </select>
+            <button id="summonerSearchButton">GO</button>
+        </div>
         <p id=status></p>
         <h2 id=championListTitle></h2>
         <ol id=championList></ol>
