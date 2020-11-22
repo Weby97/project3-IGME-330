@@ -20,8 +20,24 @@
 
     <!-- Load the following for BootstrapVueIcons support -->
     <script src="https://unpkg.com/bootstrap-vue@latest/dist/bootstrap-vue-icons.min.js"></script>
+
+
 </head>
+
 <body>
     <div id="news"></div>
+    <div id="league">
+        <input id="summonerNameInput" value="AhrilyBadAhri">
+        <select id="regionDropdown">
+            <option>na1</option>
+            <option>eun1</option>
+            <option>euw1</option>
+        </select>
+        <button id="summonerSearchButton">GO</button>
+        <p id=status></p>
+        <h2 id=championListTitle></h2>
+        <ol id=championList></ol>
+
+    </div>
 </body>
 </html>
