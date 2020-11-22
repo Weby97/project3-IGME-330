@@ -7584,11 +7584,18 @@ let summonerMasteryData;
 
 /////returns a object containing all relevant info about the user's League of Legends Account
 function listSummonerData() {
+
+    region = document.querySelector("#regionDropdown").value;
+    summonerName = document.querySelector("#summonerNameInput").value;
+
     console.log("fetching summoner data...");
     document.querySelector("#status").innerHTML = `Searching for ${summonerName} (${region})`;
 
+let listTitle = document.querySelector('#championListTitle')
+    listTitle.innerHTML = `${summonerName}'s mastered champions:`
 
-    summonerName = summonerName.trim();
+    summonerName = summonerName.trim().split(" ").join("");
+    console.log(summonerName);
     summonerName = encodeURIComponent(summonerName);
     if (summonerName.length < 1) return;
 
@@ -7668,11 +7675,10 @@ function masteryDataLoaded(e) {
 
 
     ////
-    let listTitle = document.querySelector('#championListTitle')
-    listTitle.innerHTML = `${summonerName}'s mastered champions:`
+
     let list = document.querySelector('#championList')
     //console.log(obj)
-
+    list.innerHTML = '';
     for (let i = 0; i < listCount; i++) {
         console.log(obj[i])
         let masteredChampionID = obj[i].championId; //Integer value for this champion in riot's database
@@ -7729,16 +7735,16 @@ function getChampionName(masteredChampionID) {
 }
 
 function getLastPlayDate(UNIX_timestamp) {
- var a = new Date(UNIX_timestamp);
-  var months = ['Jan','Feb','Mar','Apr','May','Jun','Jul','Aug','Sep','Oct','Nov','Dec'];
-  var year = a.getFullYear();
-  var month = months[a.getMonth()];
-  var date = a.getDate();
-  var hour = a.getHours();
-  var min = a.getMinutes();
-  var sec = a.getSeconds();
-  var time = `${month} ${date}, ${year}`;
-  return time;
+    var a = new Date(UNIX_timestamp);
+    var months = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'];
+    var year = a.getFullYear();
+    var month = months[a.getMonth()];
+    var date = a.getDate();
+    var hour = a.getHours();
+    var min = a.getMinutes();
+    var sec = a.getSeconds();
+    var time = `${month} ${date}, ${year}`;
+    return time;
 
 }
 

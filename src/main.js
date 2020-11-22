@@ -6,8 +6,6 @@ function init() {
     }
 }
 
-export {init}
-
     let cal = new Vue({
         el: '#calendar',
         data: {
@@ -48,9 +46,7 @@ export {init}
         } // end methods
     });
 
-    cal.fillHTML();
-
-}
+    //cal.fillHTML();
 
 export { init }
 
