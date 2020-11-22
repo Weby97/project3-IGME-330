@@ -1,13 +1,13 @@
 import * as lol from './lol.js'
 function init() {
-<<<<<<< HEAD
+
     document.querySelector('#summonerSearchButton').onclick = () => {
             lol.listSummonerData();
     }
 }
 
 export {init}
-=======
+
     let cal = new Vue({
         el: '#calendar',
         data: {
@@ -53,4 +53,4 @@ export {init}
 }
 
 export { init }
->>>>>>> origin/main
+
