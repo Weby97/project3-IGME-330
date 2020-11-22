@@ -18,11 +18,11 @@ function searchButtonClicked(e){
     const CALENDAR_URL = "https://calendarific.com/api/v2";
 
     // 2
-    let CALENDAR_KEY = "dc6zaTOxFJmzC";
+    let CALENDAR_KEY = "b3de703f8dcbb296bcf442aa7481ea5561f8adb8";
 
     // 3 - build up our URL string
     let url = CALENDAR_URL;
-    url += "api_key=" + CALENDAR_KEY;
+    url += "?api_key=" + CALENDAR_KEY;
 
     // ----- THIS IS WHERE YOU WILL ADD YOUR EXTRA STUFF TO THE URL -----
     // ----- - - - - BELOW IS EXAMPLE OF WHAT YOU CAN DO - - - - -----
