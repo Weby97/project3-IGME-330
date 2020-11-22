@@ -7573,6 +7573,7 @@ let championDataJSON = {
     }
 } //data for all champions in League
 let championData = championDataJSON.data //simplified to just a list of all champions;
+let listCount = 10; //ammount of champions listed to user
 console.log(championData);
 
 //object containing summoner account data
@@ -7597,7 +7598,7 @@ function listSummonerData() {
 
 
     getSummonerData(LOL_PROXY_URL)
-    console.log(summonerData)
+    //console.log(summonerData)
 
     //update page to show proper summoner name
     //updateSummonerInfo()
@@ -7638,7 +7639,7 @@ function summonerDataLoaded(e) {
 
     listMasteries(obj)
 
-    console.log(summonerData)
+    // console.log(summonerData)
 
 }
 
@@ -7670,26 +7671,22 @@ function masteryDataLoaded(e) {
     let listTitle = document.querySelector('#championListTitle')
     listTitle.innerHTML = `${summonerName}'s mastered champions:`
     let list = document.querySelector('#championList')
-    console.log(obj)
+    //console.log(obj)
 
-    for (let masteredChampion of obj) {
-
-        let masteredChampionID = masteredChampion.championId; //Integer value for this champion in riot's database
-        let aChampion //String variable used to match the player's mastered champion to the corresponding champion in the entire list
-
-        //iterating over all champions in League
-        for (let champion in championData) {
-            //the champion that matches the ID of the player's mastered champion
-            if (parseInt(championData[champion].key) == masteredChampionID) {
-                //assigning the string of the Champion's name to be used in html
-                aChampion = championData[champion].name;
-            }
-        }
-
+    for (let i = 0; i < listCount; i++) {
+        console.log(obj[i])
+        let masteredChampionID = obj[i].championId; //Integer value for this champion in riot's database
         //update html list
-        list.innerHTML += `<li>${aChampion}, Chest aquired:${masteredChampion.chestGranted}</li>`
+        list.innerHTML += `<li>${getChampionName(masteredChampionID)}, Chest aquired:${obj[i].chestGranted} Last played: ${getLastPlayDate(obj[i].lastPlayTime)}</li>`
+
 
     }
+
+    //    for (let masteredChampion of obj) {
+    //        let masteredChampionID = masteredChampion.championId; //Integer value for this champion in riot's database
+    //        //update html list
+    //        list.innerHTML += `<li>${getChampionName(masteredChampionID)}, Chest aquired:${masteredChampion.chestGranted}</li>`
+    //    }
     ////
 
     //// Why can't this global be assigned?
@@ -7702,11 +7699,12 @@ function masteryDataLoaded(e) {
 function listMasteries() {
     console.log('fetching mastery data...')
     document.querySelector("#status").innerHTML = `Searching for ${summonerName} (${region})`;
-    console.log(summonerData)
+    //console.log(summonerData)
     //url to second proxy server, which sends request to Riot to retrieve champion mastery data with summoner ID
     let LOL_MASTERY_PROXY_URL = `https://people.rit.edu/cal7114/330/projects/Lear_P3Checkpoint/lol-mastery-proxy.php?region=${region}&id=${summonerData.id}`
 
     getMasteryData(LOL_MASTERY_PROXY_URL);
+    document.querySelector("#status").innerHTML = ``;
     //    let listTitle = document.querySelector('#championListTitle')
     //    listTitle.innerHTML = `${summonerName}'s mastered champions:`
     //    let list = document.querySelector('#championList')
@@ -7716,8 +7714,31 @@ function listMasteries() {
     //    }
 }
 
-function getChampionName(championId) {
+function getChampionName(masteredChampionID) {
+    let aChampion //String variable used to match the player's mastered champion to the corresponding champion in the entire list
 
+    //iterating over all champions in League
+    for (let champion in championData) {
+        //the champion that matches the ID of the player's mastered champion
+        if (parseInt(championData[champion].key) == masteredChampionID) {
+            //assigning the string of the Champion's name to be used in html
+            return aChampion = championData[champion].name;
+        }
+    }
+
+}
+
+function getLastPlayDate(UNIX_timestamp) {
+ var a = new Date(UNIX_timestamp);
+  var months = ['Jan','Feb','Mar','Apr','May','Jun','Jul','Aug','Sep','Oct','Nov','Dec'];
+  var year = a.getFullYear();
+  var month = months[a.getMonth()];
+  var date = a.getDate();
+  var hour = a.getHours();
+  var min = a.getMinutes();
+  var sec = a.getSeconds();
+  var time = `${month} ${date}, ${year}`;
+  return time;
 
 }
 
