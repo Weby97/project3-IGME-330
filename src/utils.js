@@ -106,6 +106,10 @@ function dataError(e) {
     console.log("An error occurred");
 }
 
+function getRandomInt(min, max) {
+  return Math.floor(Math.random() * (max - min) ) + min;
+}
+
 export {
-    getData,dataLoaded
+    getData,dataLoaded,getRandomInt
 }
