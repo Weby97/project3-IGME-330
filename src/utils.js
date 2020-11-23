@@ -1,3 +1,5 @@
+import * as lol from "./lol.js"
+
 // ----- VALUES -----
 let displayTerm = "";
 let offset = 0;
