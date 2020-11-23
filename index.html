@@ -26,7 +26,13 @@
 </head>
 
 <body>
-    <video autoplay muted loop id="videoBackground" src="media/xayah.webm"><source src="rain.mp4" type="video/mp4"></video>
+
+    <div class="fullscreen-bg">
+        <video loop muted autoplay class="fullscreen-bg__video" poster="media/c-o-frel-lor-14.jpg" src="media/xayah.webm" type="video/webm">
+
+
+        </video>
+    </div>
     <div id="news"></div>
     <div id="league">
         <h1>Which Champion Should You Play Next?</h1>
@@ -52,6 +58,19 @@
                 <option>ru</option>
                 <option>tr1</option>
             </select>
+
+           <table id="calendar" class="table table-striped table-sm">
+        <thead>
+            <tr>
+                <th scope="col">Events!</th>
+            </tr>
+        </thead>
+        <tbody id="calData">
+        </tbody>
+    </table>
+
+
+
         </div>
 
 
@@ -63,19 +82,10 @@
         <p id=status></p>
         <h2 id=championListTitle></h2>
         <ol id=championList></ol>
+
     </div>
 
 
-
-    <table id="calendar" class="table table-striped table-sm">
-        <thead>
-            <tr>
-                <th scope="col">Events!</th>
-            </tr>
-        </thead>
-        <tbody id="calData">
-        </tbody>
-    </table>
 </body>
 
 </html>

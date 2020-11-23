@@ -11,7 +11,7 @@ function init() {
     let videoUrls = ['camile', 'kindred', 'xayah', 'warwick']
 
     //randomize animated background
- let randomInt = utils.getRandomInt(0, videoUrls.length);
+let randomInt = utils.getRandomInt(0, videoUrls.length);
 //    if (randomInt == 2) {
 //        document.querySelector('h1').style.color = "black"
 //    } else {

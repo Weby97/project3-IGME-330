@@ -7591,7 +7591,7 @@ function listSummonerData() {
     console.log("fetching summoner data...");
     document.querySelector("#status").innerHTML = `Searching for ${summonerName} (${region})`;
 
-let listTitle = document.querySelector('#championListTitle')
+    let listTitle = document.querySelector('#championListTitle')
     listTitle.innerHTML = `${summonerName}'s mastered champions:`
 
     summonerName = summonerName.trim().split(" ").join("");
@@ -7753,5 +7753,6 @@ function dataError(e) {
 }
 
 export {
-    listSummonerData,summonerMasteryData
+    listSummonerData,
+    summonerMasteryData
 }
