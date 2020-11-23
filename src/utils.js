@@ -3,6 +3,45 @@ let displayTerm = "";
 let offset = 0;
 let searchedFirst = false;
 
+let cal = new Vue({
+    el: '#calendar',
+    data: {
+        title: "Calendar Events",
+        result: {}
+    },
+    created() {
+        this.search("https://calendarific.com/api/v2/holidays?&api_key=b3de703f8dcbb296bcf442aa7481ea5561f8adb8&country=US&month=2&day=14&year=2019")
+    },
+    methods: {
+        search(url) {
+            fetch(url)
+                .then(response => {
+                    if (!response.ok) {
+                        throw Error(`ERROR: ${response.statusText}`);
+                    }
+                    return response.json();
+                })
+                .then(json => {
+                    console.log(json.response);
+                    this.result = json.response;
+                    let holidayArr = this.result.holidays;
+                    let tableEle = document.querySelector("#calData");
+                    for (let i = 0; i < holidayArr.length; i++) {
+                        let holiEle = document.createElement("tr");
+                        let holiData = document.createElement("td");
+                        holiData.innerHTML = holidayArr[i].name;
+                        holiEle.appendChild(holiData);
+                        holiData.innerHTML = holidayArr[i].description;
+                        holiEle.appendChild(holiData);
+                        tableEle.appendChild(holiEle);
+                    }
+                    console.log(this.result.holidays.length);
+                });
+        }, // end search
+    } // end methods
+});
+
+
 function searchButtonClicked(e) {
     console.log("searchButtonClicked() called");
     if (e.target.id == "search") {
@@ -23,35 +62,6 @@ function searchButtonClicked(e) {
     // 3 - build up our URL string
     let url = CALENDAR_URL;
     url += "?api_key=" + CALENDAR_KEY;
-
-    // ----- THIS IS WHERE YOU WILL ADD YOUR EXTRA STUFF TO THE URL -----
-    // ----- - - - - BELOW IS EXAMPLE OF WHAT YOU CAN DO - - - - -----
-
-    // 4 - parse the user entered term we wish to seach
-    // let term = document.querySelector("#searchterm").value;
-    // displayTerm = term;
-
-    // 5 - get rid of any leading and trailing spaces
-    // term = term.trim();
-
-    // 6 - encode spaces and special characters
-    // term = encodeURIComponent(term);
-
-    // 7 - if there's no term to search then bail out of the function (return does this)
-    // if(term.length  < 1) return;
-
-    // 8 - append the search term to the URL - the parameter name is 'q'
-    // url += "&q=" + term;
-
-    // 9 - grab the user chosen seach 'limit' from the <select> and append it to the URL
-    // limit = document.querySelector("#limit").value;
-    // url += "&limit=" + limit;
-
-    // 9.5 - Append offset value to the query string 
-    // url += "&offset=" + offset;
-
-    // 10 - update the UI
-    // document.querySelector("#status").innerHTML = "<b>Searching for '" + displayTerm + "'</b>";
 
     // 11 - see what the URL looks like
     console.log(url);
@@ -98,6 +108,7 @@ function dataLoaded(e) {
     //console.log(obj)
 
 
+
     ////CHASE: lets make this function work for any api, then do the further parsing in our own functions
 
 }
@@ -107,9 +118,38 @@ function dataError(e) {
 }
 
 function getRandomInt(min, max) {
-  return Math.floor(Math.random() * (max - min) ) + min;
+    return Math.floor(Math.random() * (max - min)) + min;
 }
 
 export {
-    getData,dataLoaded,getRandomInt
+    getData, dataLoaded, getRandomInt
 }
+
+// ----- THIS IS WHERE YOU WILL ADD YOUR EXTRA STUFF TO THE URL -----
+    // ----- - - - - BELOW IS EXAMPLE OF WHAT YOU CAN DO - - - - -----
+
+    // 4 - parse the user entered term we wish to seach
+    // let term = document.querySelector("#searchterm").value;
+    // displayTerm = term;
+
+    // 5 - get rid of any leading and trailing spaces
+    // term = term.trim();
+
+    // 6 - encode spaces and special characters
+    // term = encodeURIComponent(term);
+
+    // 7 - if there's no term to search then bail out of the function (return does this)
+    // if(term.length  < 1) return;
+
+    // 8 - append the search term to the URL - the parameter name is 'q'
+    // url += "&q=" + term;
+
+    // 9 - grab the user chosen seach 'limit' from the <select> and append it to the URL
+    // limit = document.querySelector("#limit").value;
+    // url += "&limit=" + limit;
+
+    // 9.5 - Append offset value to the query string 
+    // url += "&offset=" + offset;
+
+    // 10 - update the UI
+    // document.querySelector("#status").innerHTML = "<b>Searching for '" + displayTerm + "'</b>";
