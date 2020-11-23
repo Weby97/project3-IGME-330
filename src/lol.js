@@ -7683,7 +7683,7 @@ function masteryDataLoaded(e) {
         console.log(obj[i])
         let masteredChampionID = obj[i].championId; //Integer value for this champion in riot's database
         //update html list
-        list.innerHTML += `<li>${getChampionName(masteredChampionID)}, Chest aquired:${obj[i].chestGranted} Last played: ${getLastPlayDate(obj[i].lastPlayTime)}</li>`
+        list.innerHTML += `<li>${getChampionName(masteredChampionID)}, Chest aquired:${obj[i].chestGranted}, Last played: ${getLastPlayDate(obj[i].lastPlayTime)}</li>`
 
 
     }
@@ -7753,5 +7753,5 @@ function dataError(e) {
 }
 
 export {
-    listSummonerData
+    listSummonerData,summonerMasteryData
 }

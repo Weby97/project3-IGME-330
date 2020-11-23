@@ -1,9 +1,16 @@
 import * as lol from './lol.js'
+import * as utils from './utils.js'
 function init() {
 
+    //event handler for league search button
     document.querySelector('#summonerSearchButton').onclick = () => {
             lol.listSummonerData();
     }
+
+    let videoUrls = ['camile','kindred','tristana','xayah','warwick']
+
+    //randomize animated background
+    document.querySelector('.fullscreen-bg__video').src = `./media/${videoUrls[utils.getRandomInt(0,videoUrls.length)]}.webm`
 }
 
 
