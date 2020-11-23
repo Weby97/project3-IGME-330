@@ -11,7 +11,11 @@ function init() {
     let videoUrls = ['camile', 'kindred', 'xayah', 'warwick']
 
     //randomize animated background
+<<<<<<< HEAD
 let randomInt = utils.getRandomInt(0, videoUrls.length);
+=======
+    let randomInt = utils.getRandomInt(0, videoUrls.length);
+>>>>>>> origin/main
 //    if (randomInt == 2) {
 //        document.querySelector('h1').style.color = "black"
 //    } else {
@@ -20,6 +24,7 @@ let randomInt = utils.getRandomInt(0, videoUrls.length);
 
     document.querySelector('.fullscreen-bg__video').src = `./media/${videoUrls[randomInt]}.webm`
 }
+<<<<<<< HEAD
 
 
 let cal = new Vue({
@@ -63,6 +68,9 @@ let cal = new Vue({
 });
 
 //cal.fillHTML();
+=======
+
+>>>>>>> origin/main
 
 export {
     init
