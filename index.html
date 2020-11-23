@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -20,82 +21,60 @@
 
     <!-- Load the following for BootstrapVueIcons support -->
     <script src="https://unpkg.com/bootstrap-vue@latest/dist/bootstrap-vue-icons.min.js"></script>
-    <style>
-
-
-    .fullscreen-bg {
-  position: fixed;
-  top: 0;
-  right: 0;
-  bottom: 0;
-  left: 0;
-  overflow: hidden;
-  z-index: -100;
-}
-
-.fullscreen-bg__video {
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-}
-
-@media (min-aspect-ratio: 16/9) {
-  .fullscreen-bg__video {
-    height: 300%;
-    top: -100%;
-  }
-}
-
-@media (max-aspect-ratio: 16/9) {
-  .fullscreen-bg__video {
-    width: 300%;
-    left: -100%;
-  }
-}
-
-@media (max-width: 767px) {
-  .fullscreen-bg {
-    background: url('../img/videoframe.jpg') center center / cover no-repeat;
-  }
-
-  .fullscreen-bg__video {
-    display: none;
-  }
-}
-
-    </style>
+    <link type="text/css" rel="stylesheet" href="styles/default-styles.css">
 
 </head>
 
 <body>
 
-    <h1>What Champion Should I Go?</h1>
     <div class="fullscreen-bg">
-    <video loop muted autoplay class="fullscreen-bg__video" poster = "media/c-o-frel-lor-14.jpg" src="media/xayah.webm" type="video/webm">
+        <video loop muted autoplay class="fullscreen-bg__video" poster="media/c-o-frel-lor-14.jpg" src="media/xayah.webm" type="video/webm">
 
 
-    </video>
-</div>
+        </video>
+    </div>
     <div id="news"></div>
     <div id="league">
+        <h1>Which Champion Should You Play Next?</h1>
+
         <div id=search>
-            <input id="summonerNameInput" value="AhrilyBadAhri">
-            <select id="regionDropdown">
+            <div class="wrap">
+            <div class="search">
+                <input type="text" id="summonerNameInput" class="searchTerm" placeholder="Enter your summoner name.">
+                <button type="submit" id="summonerSearchButton" class="searchButton">
+                    <image src= "images/searchicon.png" width='20px'> </image>
+                </button>
+            </div>
+                <select id="regionDropdown">
                 <option>na1</option>
                 <option>eun1</option>
                 <option>euw1</option>
+                <option>br1</option>
+                <option>jp1</option>
+                <option>kr</option>
+                <option>la1</option>
+                <option>la2</option>
+                <option>oc1</option>
+                <option>ru</option>
+                <option>tr1</option>
             </select>
-            <button id="summonerSearchButton">GO</button>
         </div>
+
+
+        </div>
+
+
+
+
         <p id=status></p>
         <h2 id=championListTitle></h2>
         <ol id=championList></ol>
 
     </div>
 
-    <table id="calendar"class="table table-striped table-sm">
+
+
+    <table id="calendar" class="table table-striped table-sm">
         <thead>
             <tr>
                 <th scope="col">Events!</th>
@@ -106,4 +85,5 @@
     </table>
 
 </body>
+
 </html>
