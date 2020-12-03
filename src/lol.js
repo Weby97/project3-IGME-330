@@ -7574,7 +7574,7 @@ let championDataJSON = {
 } //data for all champions in League
 let championData = championDataJSON.data //simplified to just a list of all champions;
 let listCount = 10; //ammount of champions listed to user
-console.log(championData);
+//console.log(championData);
 
 //object containing summoner account data
 let summonerData;
@@ -7583,44 +7583,40 @@ let summonerData;
 let summonerMasteryData;
 
 /////returns a object containing all relevant info about the user's League of Legends Account
-function listSummonerData() {
+function listSummonerData(callback) {
 
     region = document.querySelector("#regionDropdown").value;
     summonerName = document.querySelector("#summonerNameInput").value;
 
     console.log("fetching summoner data...");
     document.querySelector("#status").innerHTML = `Searching for ${summonerName} (${region})`;
-
+debugger;
     let listTitle = document.querySelector('#championListTitle')
     listTitle.innerHTML = `${summonerName}'s mastered champions:`
 
     summonerName = summonerName.trim().split(" ").join("");
-    console.log(summonerName);
+    //console.log(summonerName);
     summonerName = encodeURIComponent(summonerName);
     if (summonerName.length < 1) return;
 
     //url to fetch summoner data from riot (contains summoner ID) via proxy server on banjo
     let LOL_PROXY_URL = `https://people.rit.edu/cal7114/330/projects/Lear_P3Checkpoint/lol-proxy.php?region=${region}&summonerName=${summonerName}`;
 
-
-
-    getSummonerData(LOL_PROXY_URL)
-    //console.log(summonerData)
-
-    //update page to show proper summoner name
+    //update page to show proper summoner name -- not written yet
     //updateSummonerInfo()
 
     //continue to collect champion mastery data with another xhr request
+    getSummonerData(LOL_PROXY_URL,callback)
 
 
 }
 
-function getSummonerData(url) {
+function getSummonerData(url,callback) {
     // 1 - create a new XHR object
     let xhr = new XMLHttpRequest();
 
     // 2 - set the onload handler
-    xhr.onload = summonerDataLoaded;
+    xhr.onload = callback;
 
     // 3 - set the onerror handler
     xhr.onerror = dataError;
@@ -7635,18 +7631,14 @@ function summonerDataLoaded(e) {
     //event.target is the xhr object
     let xhr = e.target;
 
-
     //turn the text into a parsable JavaScript object
     let obj = JSON.parse(xhr.responseText);
-
-
 
     //set summonerData variable
     summonerData = obj;
 
-    listMasteries(obj)
+    listMasteries()
 
-    // console.log(summonerData)
 
 }
 
@@ -7673,30 +7665,18 @@ function masteryDataLoaded(e) {
     //turn the text into a parsable JavaScript object
     let obj = JSON.parse(xhr.responseText);
 
-
-    ////
-
     let list = document.querySelector('#championList')
     //console.log(obj)
     list.innerHTML = '';
     for (let i = 0; i < listCount; i++) {
-        console.log(obj[i])
+        //console.log(obj[i])
         let masteredChampionID = obj[i].championId; //Integer value for this champion in riot's database
         //update html list
         list.innerHTML += `<li>${getChampionName(masteredChampionID)}, Chest aquired:${obj[i].chestGranted}, Last played: ${getLastPlayDate(obj[i].lastPlayTime)}</li>`
     }
 
-    //    for (let masteredChampion of obj) {
-    //        let masteredChampionID = masteredChampion.championId; //Integer value for this champion in riot's database
-    //        //update html list
-    //        list.innerHTML += `<li>${getChampionName(masteredChampionID)}, Chest aquired:${masteredChampion.chestGranted}</li>`
-    //    }
-    ////
+    summonerMasteryData = obj;
 
-    //// Why can't this global be assigned?
-    //set summonerData variable
-    //summonerMasteryData = obj;
-    ////
 }
 
 //uses champion id from summonerData to get champion mastery data from Riot api
@@ -7709,13 +7689,7 @@ function listMasteries() {
 
     getMasteryData(LOL_MASTERY_PROXY_URL);
     document.querySelector("#status").innerHTML = ``;
-    //    let listTitle = document.querySelector('#championListTitle')
-    //    listTitle.innerHTML = `${summonerName}'s mastered champions:`
-    //    let list = document.querySelector('#championList')
-    //    for (let champion of summonerMasteryData) {
-    //        list.innerHTML += `<li>${champion.id}</li>`
-    //
-    //    }
+
 }
 
 function getChampionName(masteredChampionID) {
@@ -7749,8 +7723,9 @@ function getLastPlayDate(UNIX_timestamp) {
 function dataError(e) {
     console.log("An error occurred");
 }
-
+function getterMasteryData(){
+return summonerMasteryData;
+}
 export {
-    listSummonerData,
-    summonerMasteryData
+    listSummonerData,getterMasteryData
 }

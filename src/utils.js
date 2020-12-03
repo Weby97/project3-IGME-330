@@ -1,7 +1,12 @@
+import * as lol from './lol.js'
+
 // ----- VALUES -----
 let displayTerm = "";
 let offset = 0;
 let searchedFirst = false;
+let day = 14
+let year = 2019
+let month = 3
 
 let cal = new Vue({
     el: '#calendar',
@@ -10,7 +15,7 @@ let cal = new Vue({
         result: {}
     },
     created() {
-        this.search("https://calendarific.com/api/v2/holidays?&api_key=b3de703f8dcbb296bcf442aa7481ea5561f8adb8&country=US&month=2&day=14&year=2019")
+        this.search(`https://calendarific.com/api/v2/holidays?&api_key=b3de703f8dcbb296bcf442aa7481ea5561f8adb8&country=US&month=${month}&day=${day}&year=${year}`)
     },
     methods: {
         search(url) {
@@ -122,34 +127,36 @@ function getRandomInt(min, max) {
 }
 
 export {
-    getData, dataLoaded, getRandomInt
+    getData,
+    dataLoaded,
+    getRandomInt
 }
 
 // ----- THIS IS WHERE YOU WILL ADD YOUR EXTRA STUFF TO THE URL -----
-    // ----- - - - - BELOW IS EXAMPLE OF WHAT YOU CAN DO - - - - -----
+// ----- - - - - BELOW IS EXAMPLE OF WHAT YOU CAN DO - - - - -----
 
-    // 4 - parse the user entered term we wish to seach
-    // let term = document.querySelector("#searchterm").value;
-    // displayTerm = term;
+// 4 - parse the user entered term we wish to seach
+// let term = document.querySelector("#searchterm").value;
+// displayTerm = term;
 
-    // 5 - get rid of any leading and trailing spaces
-    // term = term.trim();
+// 5 - get rid of any leading and trailing spaces
+// term = term.trim();
 
-    // 6 - encode spaces and special characters
-    // term = encodeURIComponent(term);
+// 6 - encode spaces and special characters
+// term = encodeURIComponent(term);
 
-    // 7 - if there's no term to search then bail out of the function (return does this)
-    // if(term.length  < 1) return;
+// 7 - if there's no term to search then bail out of the function (return does this)
+// if(term.length  < 1) return;
 
-    // 8 - append the search term to the URL - the parameter name is 'q'
-    // url += "&q=" + term;
+// 8 - append the search term to the URL - the parameter name is 'q'
+// url += "&q=" + term;
 
-    // 9 - grab the user chosen seach 'limit' from the <select> and append it to the URL
-    // limit = document.querySelector("#limit").value;
-    // url += "&limit=" + limit;
+// 9 - grab the user chosen seach 'limit' from the <select> and append it to the URL
+// limit = document.querySelector("#limit").value;
+// url += "&limit=" + limit;
 
-    // 9.5 - Append offset value to the query string
-    // url += "&offset=" + offset;
+// 9.5 - Append offset value to the query string
+// url += "&offset=" + offset;
 
-    // 10 - update the UI
-    // document.querySelector("#status").innerHTML = "<b>Searching for '" + displayTerm + "'</b>";
+// 10 - update the UI
+// document.querySelector("#status").innerHTML = "<b>Searching for '" + displayTerm + "'</b>";

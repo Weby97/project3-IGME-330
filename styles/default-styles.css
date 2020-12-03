@@ -1,5 +1,5 @@
 h1 {
-
+font-size:4rem;
     font-family: 'Friz Quadrata Regular';
     color: white;
 }
@@ -26,11 +26,7 @@ ol{
 }
 
 table{
-<<<<<<< HEAD
-/*    display: none;*/
-=======
     display: auto;
->>>>>>> origin/main
 }
 .fullscreen-bg {
     position: fixed;
