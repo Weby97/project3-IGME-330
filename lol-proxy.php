@@ -4,7 +4,7 @@
 // 1) The URL to the web service
 
 
-    $URL = 'https://'.$_GET['region'].'.api.riotgames.com/lol/summoner/v4/summoners/by-name/'.$_GET['summonerName'].'?api_key=RGAPI-065a5d71-cfb6-4f6c-b6c0-512ac432c963';
+    $URL = 'https://'.$_GET['region'].'.api.riotgames.com/lol/summoner/v4/summoners/by-name/'.$_GET['summonerName'].'?api_key=RGAPI-26e675f8-af6b-44d9-a78f-67805447f07b';
 
 	// 6) Call the web service
 	$result = file_get_contents($URL);

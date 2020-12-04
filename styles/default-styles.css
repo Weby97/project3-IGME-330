@@ -1,33 +1,17 @@
+@import url(https://fonts.googleapis.com/css?family=Open+Sans);
+
 h1 {
-font-size:4rem;
+    font-size: 4rem;
     font-family: 'Friz Quadrata Regular';
     color: white;
 }
 
-body{
-  font-family: 'Open Sans', sans-serif;
-        color: white;
-      text-shadow: 5px 10px 20px #000000;
-
-
+body {
+    font-family: 'Open Sans', sans-serif;
+    color: white;
+    text-shadow: 5px 10px 20px #000000;
 }
 
-#league{
-    margin:3rem;
-
-}
-
-ol{
-
-    background-color: 'white';
-    color:'white';
-      text-shadow: 5px 10px 20px #000000;
-
-}
-
-table{
-    display: auto;
-}
 .fullscreen-bg {
     position: fixed;
     top: 0;
@@ -46,21 +30,6 @@ table{
     height: 100%;
 }
 
-#page-container {
-  position: relative;
-  min-height: 100vh;
-}
-
-#content-wrap {
-  padding-bottom: 2.5rem;    /* Footer height */
-}
-
-#footer {
-  position: absolute;
-  bottom: 0;
-  width: 100%;
-  height: 2.5rem;            /* Footer height */
-}
 
 @media (min-aspect-ratio: 16/9) {
     .fullscreen-bg__video {
@@ -85,50 +54,53 @@ table{
         display: none;
     }
 }
-@import url(https://fonts.googleapis.com/css?family=Open+Sans);
+
+main {
+    width: 50%;
+    margin-right: auto;
+    margin-left: auto;
+}
 
 .search {
-  width: 100%;
-  position: relative;
-  display: flex;
+    width: 50%;
+    position: relative;
+    display: flex;
 }
 
 .searchTerm {
-  width: 100%;
-  border: 3px solid #00B4CC;
-  border-right: none;
-  padding: 5px;
-  height: 2rem;
-  border-radius: 5px 0 0 5px;
-  outline: none;
-  color: #9DBFAF;
+    width: 80%;
+    border: 3px solid #00B4CC;
+    /*  border-right: none;*/
+    padding: 5px;
+    height: 2rem;
+    border-radius: 5px 5px 5px 5px;
+    outline: none;
+    /*  color: red;*/
 }
 
-.searchTerm:focus{
-  color: #00B4CC;
+.searchTerm:focus {
+    color: #00B4CC;
 }
 
 .searchButton {
-  width: 2rem;
-  height: 2rem;
-  border: 1px solid #00B4CC;
-  background: #00B4CC;
+    width: 2rem;
+    height: 2rem;
+    outline: none;
+    border: 1px solid #00B4CC;
+    background: #00B4CC;
     background-image: url('../images/searchicon.png');
-  text-align: center;
-  color: #fff;
-  border-radius: 0 5px 5px 0;
-  cursor: pointer;
-  font-size: 20px;
+    text-align: center;
+    color: 'rgba(0,0,0,0)';
+    border-radius: 5px 5px 5px 5px;
+    cursor: pointer;
+    font-size: 20px;
 }
 
-/*Resize the wrap to see the search bar change!*/
-.wrap{
-  width: 30%;
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
+.searchButton:active{
+    outline: none;
 }
-
+.searchButton:any-link{
+    outline:none;
+}
 
 

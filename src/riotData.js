@@ -1,4 +1,5 @@
-{
+
+let leagueChampionData = {
     type: "champion",
     format: "standAloneComplex",
     version: "10.23.1",
@@ -7567,4 +7568,7 @@
             }
         }
     }
+}
+export{
+leagueChampionData
 }

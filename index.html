@@ -7,144 +7,46 @@
     <title>What Champion Should I Go?</title>
 
     <script src="./src/loader.js" type="module"></script>
-
+    <script src="./ " type="module"></script>
     <!-- Load required Bootstrap and BootstrapVue CSS -->
     <link type="text/css" rel="stylesheet" href="https://unpkg.com/bootstrap/dist/css/bootstrap.min.css" />
     <link type="text/css" rel="stylesheet" href="https://unpkg.com/bootstrap-vue@latest/dist/bootstrap-vue.min.css" />
 
     <!-- Load polyfills to support older browsers -->
-    <script src="https://polyfill.io/v3/polyfill.min.js?features=es2015%2CIntersectionObserver"
-        crossorigin="anonymous"></script>
+    <script src="https://polyfill.io/v3/polyfill.min.js?features=es2015%2CIntersectionObserver" crossorigin="anonymous"></script>
 
     <!-- Load Vue followed by BootstrapVue -->
-    <script src="https://unpkg.com/vue@latest/dist/vue.min.js"></script>
-    <script src="https://unpkg.com/bootstrap-vue@latest/dist/bootstrap-vue.min.js"></script>
+    <script src="https://unpkg.com/vue@latest/dist/vue.js"></script>
+    <script src="https://unpkg.com/bootstrap-vue@latest/dist/bootstrap-vue.js"></script>
 
     <!-- Load the following for BootstrapVueIcons support -->
-    <script src="https://unpkg.com/bootstrap-vue@latest/dist/bootstrap-vue-icons.min.js"></script>
+    <script src="https://unpkg.com/bootstrap-vue@latest/dist/bootstrap-vue-icons.js"></script>
     <link type="text/css" rel="stylesheet" href="styles/default-styles.css">
 
 </head>
 
 <body>
+    <div id='root'>
+        <main>
+        <h1>{{title}}</h1>
+
+        <div class="fullscreen-bg">
+            <video loop muted autoplay class="fullscreen-bg__video" poster="media/c-o-frel-lor-14.jpg" src="media/xayah.webm" type="video/webm">
+            </video>
+        </div>
 
 
+            <input v-model="text" id="summonerNameInput" class="searchTerm" value="AhrilyBadAhri" v-model="summonerInfo.sn">
 
-    <div class="fullscreen-bg">
-        <video loop muted autoplay class="fullscreen-bg__video" poster="media/c-o-frel-lor-14.jpg" src="media/xayah.webm" type="video/webm">
+            <button type="submit" id="summonerSearchButton" class="searchButton" @click='searchClicked'>
+                <image src="images/searchicon.png" width='20px'> </image>
+            </button>
 
 
-        </video>
-    </div>
-    <div id="news"></div>
-    <div id="league">
-        <h1>Which Champion Should You Play Next?</h1>
-
-        <div id=search>
-            <div class="wrap">
-            <div class="search">
-                <input type="text" id="summonerNameInput" class="searchTerm" placeholder="Enter your summoner name.">
-                <button type="submit" id="summonerSearchButton" class="searchButton">
-                    <image src= "images/searchicon.png" width='20px'> </image>
-                </button>
-            </div>
-                <select id="regionDropdown">
-                <option>na1</option>
-                <option>eun1</option>
-                <option>euw1</option>
-                <option>br1</option>
-                <option>jp1</option>
-                <option>kr</option>
-                <option>la1</option>
-                <option>la2</option>
-                <option>oc1</option>
-                <option>ru</option>
-                <option>tr1</option>
+            <select id="regionDropdown" v-model="summonerInfo.region">
+                <option v-for="r in regions" v-bind:regions="r">{{r}}</option>
             </select>
-
-           <table id="calendar" class="table table-striped table-sm">
-        <thead>
-            <tr>
-                <th scope="col">Events!</th>
-            </tr>
-        </thead>
-        <tbody id="calData">
-        </tbody>
-    </table>
-
-
-
-        </div>
-
-    <div class="fullscreen-bg">
-        <video loop muted autoplay class="fullscreen-bg__video" poster="media/c-o-frel-lor-14.jpg"
-            src="media/xayah.webm" type="video/webm">
-
-
-
-        </video>
-    </div>
-    <div id="page-container">
-        <div id="content-wrap">
-
-
-            <div id="news"></div>
-            <div id="league">
-                <h1>Which Champion Should You Play Next?</h1>
-
-                <div id=search>
-                    <div class="wrap">
-                        <div class="search">
-                            <input type="text" id="summonerNameInput" class="searchTerm"
-                                placeholder="Enter your summoner name.">
-                            <button type="submit" id="summonerSearchButton" class="searchButton">
-                                <image src="images/searchicon.png" width='20px'> </image>
-                            </button>
-                        </div>
-                        <select id="regionDropdown">
-                            <option>na1</option>
-                            <option>eun1</option>
-                            <option>euw1</option>
-                            <option>br1</option>
-                            <option>jp1</option>
-                            <option>kr</option>
-                            <option>la1</option>
-                            <option>la2</option>
-                            <option>oc1</option>
-                            <option>ru</option>
-                            <option>tr1</option>
-                        </select>
-                    </div>
-
-
-                </div>
-
-                <p id=status></p>
-                <h2 id=championListTitle></h2>
-                <ol id=championList></ol>
-            </div>
-            <footer id="footer">
-                <table id="calendar" class="table table-striped table-sm bg-white text-dark">
-                    <thead>
-                        <tr>
-                            <th scope="col">Events!</th>
-                        </tr>
-                    </thead>
-                    <tbody id="calData">
-                    </tbody>
-                </table>
-            </footer>
-        </div>
-
-
-
-
-        <p id=status></p>
-        <h2 id=championListTitle></h2>
-        <ol id=championList></ol>
-
-    </div>
-
+            </main>
     </div>
 
 </body>
