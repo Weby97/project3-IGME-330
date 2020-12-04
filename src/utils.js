@@ -1,6 +1,10 @@
+<<<<<<< HEAD
 
 import * as lol from './lol.js'
 
+=======
+import * as lol from "./lol.js"
+>>>>>>> origin/main
 
 // ----- VALUES -----
 let displayTerm = "";
