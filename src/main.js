@@ -32,9 +32,7 @@ let app = new Vue({
         searchClicked() {
             lol.listSummonerData(this.summonerInfo.sn, this.summonerInfo.region, summonerDataCallback);
 
-        },
-
-
+        }
 
     }
 });
