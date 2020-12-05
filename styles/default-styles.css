@@ -77,12 +77,22 @@ main {
     border-radius: 5px 5px 5px 5px;
     outline: none;
     /*  color: red;*/
+}.searchTerm {
+    width: 80%;
+    border: 3px solid #00B4CC;
+    /*  border-right: none;*/
+    padding: 5px;
+    height: 2rem;
+    border-radius: 5px 5px 5px 5px;
+    outline: none;
+    /*  color: red;*/
 }
 
 .searchTerm:focus {
     color: #00B4CC;
 }
 
+/*
 .searchButton {
     width: 2rem;
     height: 2rem;
@@ -95,6 +105,10 @@ main {
     border-radius: 5px 5px 5px 5px;
     cursor: pointer;
     font-size: 20px;
+}
+*/
+.searchButton {
+
 }
 
 .searchButton:active{

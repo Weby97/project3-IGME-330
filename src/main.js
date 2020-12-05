@@ -4,9 +4,6 @@ import * as utils from './utils.js'
 let app = new Vue({
     el: '#root',
 
-
-
-
     data: {
         title: "What Champion Should You Play?",
         regions: ["na1","eun1","euw1","br1","jp1","kr","la1","la2","oc1","ru","tr1"],
@@ -25,7 +22,6 @@ let app = new Vue({
             return `./media/${this.videoNames[utils.getRandomInt(0,this.videoNames.length)]}.webm`
         },
         searchClicked() {
-
 
             lol.listSummonerData(this.summonerInfo.sn,this.summonerInfo.region,summonerDataCallback);
 
