@@ -137,7 +137,7 @@ function getDateFromTimeStamp(UNIX_timestamp) {
     var hour = a.getHours();
     var min = a.getMinutes();
     var sec = a.getSeconds();
-    var time = `${month} ${date}, ${year}`;
+    var time = [month, date, year];
     return time;
 
 }
