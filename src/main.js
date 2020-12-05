@@ -44,9 +44,10 @@ function calendarDataCallback(e) {
     // On the day you last played this champion, it was ________
     for(let j = 0; j < 3; j++){
         if(typeof calendarData.response.holidays[j].name === 'undefined'){
-            app.summonerInfo.masteredChampions[j].holiday = "when there was no holiday going on in the US."
+            let date = utils.getDateFromTimeStamp(app.summonerInfo.masteredChampions[j].lastPlayTime);
+            app.summonerInfo.masteredChampions[j].holiday = `The last time you played this champion, it was: ${date[0]} / ${date[1]} / ${date[2]}`;
         } else {
-            app.summonerInfo.masteredChampions[j].holiday = calendarData.response.holidays[j].name;
+            app.summonerInfo.masteredChampions[j].holiday = `The last time you played this champion, it was: ${calendarData.response.holidays[j].name}`;
         }
     }
 
