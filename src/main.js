@@ -82,7 +82,7 @@ function dataFinished() {
     }
 
     localStorage.setItem("summonerInfo", JSON.stringify(app.summonerInfo))
-    //window.location = 'results.html';
+    window.location = 'results.html';
     console.log(app.summonerInfo.masteredChampions[0])
 
 }
