@@ -39,7 +39,7 @@
             <div id='buttons'>
 
 
-                <input v-model="text" placeholder="Enter your summoner name" v-model="summonerInfo.sn">
+                <input placeholder="Enter your summoner name" v-model="summonerInfo.sn">
                 <select id="regionDropdown" v-model="summonerInfo.region">
                     <option v-for="r in regions" v-bind:regions="r">{{r}}</option>
                 </select>

@@ -15,7 +15,8 @@ let app = new Vue({
             id: "",
             masteredChampions: [],
             region: "na1",
-        }
+        },
+
 
     },
     methods: {
@@ -31,6 +32,9 @@ let app = new Vue({
 
             lol.listSummonerData(this.summonerInfo.sn, this.summonerInfo.region, summonerDataCallback);
             localStorage.setItem("summonerInfo",JSON.stringify(this.summonerInfo))
+
+            //this.summonerInfo.masteredChampions[0].lastPlayTime
+
             window.location = 'results.html'
 
             function summonerDataCallback(e) {
