@@ -24,4 +24,8 @@ function getCalendarData(url,callback) {
     xhr.send();
 }
 
+function dataError(e) {
+    console.log("An error occurred");
+}
+
 export { getCalendarData, listCalendarData }

@@ -23,7 +23,7 @@ let app = new Vue({
     methods: {
 
         getRandomVideoUrl() {
-            return `./media/${this.videoNames[utils.getRandomInt(0,this.videoNames.length)]}.webm`
+            return `./media/${this.videoNames[utils.getRandomInt(0, this.videoNames.length)]}.webm`
         },
         searchHover() {
             searchButton.style.display = none;
@@ -41,7 +41,16 @@ let app = new Vue({
 function calendarDataCallback(e) {
     console.log("calendar data fetched");
     let calendarData = JSON.parse(e.target.response);
-    console.log(calendarData.response.holidays);
+    // On the day you last played this champion, it was ________
+    for(let j = 0; j < 3; j++){
+        if(typeof calendarData.response.holidays[j].name === 'undefined'){
+            app.summonerInfo.masteredChampions[j].holiday = "when there was no holiday going on in the US."
+        } else {
+            app.summonerInfo.masteredChampions[j].holiday = calendarData.response.holidays[j].name;
+        }
+    }
+
+    console.log(calendarData.response.holidays[0].name);
 }
 
 function summonerDataCallback(e) {
@@ -66,11 +75,17 @@ function summonerDataCallback(e) {
 }
 
 function dataFinished() {
-            localStorage.setItem("summonerInfo", JSON.stringify(app.summonerInfo))
-            window.location = 'results.html';
-            console.log(app.summonerInfo.masteredChampions[0])
+    // The Calendar magic happens here
+    for(let i = 0; i < 3; i++){
+        let time = utils.getDateFromTimeStamp(app.summonerInfo.masteredChampions[i].lastPlayTime);
+        cal.listCalendarData(time, calendarDataCallback);
+    }
 
-        }
+    localStorage.setItem("summonerInfo", JSON.stringify(app.summonerInfo))
+    //window.location = 'results.html';
+    console.log(app.summonerInfo.masteredChampions[0])
+
+}
 
 function init() {
     let videoUrls = ['camile', 'kindred', 'xayah', 'warwick']
