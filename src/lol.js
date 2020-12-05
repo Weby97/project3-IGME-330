@@ -23,7 +23,7 @@ function listSummonerData(summonerName,region,callback) {
     if (summonerName.length < 1) return;
 
     //url to fetch summoner data from riot (contains summoner ID) via proxy server on banjo
-    let LOL_PROXY_URL = `https://people.rit.edu/cal7114/330/projects/Lear_P3Checkpoint/lol-proxy.php?region=${region}&summonerName=${summonerName}`;
+    let LOL_PROXY_URL = `https://people.rit.edu/cal7114/330/projects/Lear_P3Final/lol-proxy.php?region=${region}&summonerName=${summonerName}`;
 
     //update page to show proper summoner name -- not written yet
     //updateSummonerInfo()
@@ -69,7 +69,7 @@ function listMasteries(summonerInfo,callback) {
    let region = summonerInfo.region;
     let summonerId = summonerInfo.id;
     //url to second proxy server, which sends request to Riot to retrieve champion mastery data with summoner ID
-    let LOL_MASTERY_PROXY_URL = `https://people.rit.edu/cal7114/330/projects/Lear_P3Checkpoint/lol-mastery-proxy.php?region=${region}&id=${summonerId}`
+    let LOL_MASTERY_PROXY_URL = `https://people.rit.edu/cal7114/330/projects/Lear_P3Final/lol-mastery-proxy.php?region=${region}&id=${summonerId}`
 
     getMasteryData(LOL_MASTERY_PROXY_URL,callback);
     //document.querySelector("#status").innerHTML = ``;

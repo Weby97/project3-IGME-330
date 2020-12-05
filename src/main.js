@@ -39,7 +39,6 @@ let app = new Vue({
     }
 });
 
-
 function calendarDataCallback(e) {
     console.log("calendar data fetched");
     let calendarData = JSON.parse(e.target.response);
@@ -80,7 +79,6 @@ function init() {
     document.querySelector('.fullscreen-bg__video').src = `./media/${videoUrls[randomInt]}.webm`
 
 }
-
 
 export {
     init
