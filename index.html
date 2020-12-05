@@ -27,26 +27,36 @@
 
 <body>
     <div id='root'>
-        <main>
-        <h1>{{title}}</h1>
 
         <div class="fullscreen-bg">
             <video loop muted autoplay class="fullscreen-bg__video" poster="media/c-o-frel-lor-14.jpg" src="media/xayah.webm" type="video/webm">
             </video>
         </div>
 
+        <main>
+            <h1>{{title}}</h1>
 
-            <input v-model="text" id="summonerNameInput" class="searchTerm" value="AhrilyBadAhri" v-model="summonerInfo.sn">
-
-            <button type="submit" id="summonerSearchButton" class="searchButton" @click='searchClicked'>
-                <image src="images/searchicon.png" width='20px'> </image>
-            </button>
+            <div id='buttons'>
 
 
-            <select id="regionDropdown" v-model="summonerInfo.region">
-                <option v-for="r in regions" v-bind:regions="r">{{r}}</option>
-            </select>
-            </main>
+                <input v-model="text" placeholder="Enter your summoner name" v-model="summonerInfo.sn">
+                <select id="regionDropdown" v-model="summonerInfo.region">
+                    <option v-for="r in regions" v-bind:regions="r">{{r}}</option>
+                </select>
+
+                <button id="searchButton" type="submit" @click='searchClicked' @hover='searchHover'>
+                    <figure class="swap-on-hover">
+                        <image  class="swap-on-hover__front-image" src="images/searchicon.png"> </image>
+                        <image class="swap-on-hover__back-image" src="images/searchiconfocus.png" > </image>
+                    </figure>
+                </button>
+
+
+
+            </div>
+
+
+        </main>
     </div>
 
 </body>

@@ -1,12 +1,13 @@
 import * as lol from './lol.js'
 import * as utils from './utils.js'
 
+
 let app = new Vue({
     el: '#root',
 
     data: {
         title: "What Champion Should You Play?",
-        regions: ["na1","eun1","euw1","br1","jp1","kr","la1","la2","oc1","ru","tr1"],
+        regions: ["na1", "eun1", "euw1", "br1", "jp1", "kr", "la1", "la2", "oc1", "ru", "tr1"],
         videoNames: ['camile', 'kindred', 'xayah', 'warwick'],
 
         summonerInfo: {
@@ -18,12 +19,19 @@ let app = new Vue({
 
     },
     methods: {
+
         getRandomVideoUrl() {
             return `./media/${this.videoNames[utils.getRandomInt(0,this.videoNames.length)]}.webm`
         },
+        searchHover(){
+          searchButton.style.display= none;
+        searchHoverButton.style.display=block;
+        },
         searchClicked() {
 
-            lol.listSummonerData(this.summonerInfo.sn,this.summonerInfo.region,summonerDataCallback);
+            lol.listSummonerData(this.summonerInfo.sn, this.summonerInfo.region, summonerDataCallback);
+            localStorage.setItem("summonerInfo",JSON.stringify(this.summonerInfo))
+            window.location = 'results.html'
 
             function summonerDataCallback(e) {
                 console.log("summoner data fetched")

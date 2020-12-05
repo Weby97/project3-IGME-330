@@ -1,8 +1,8 @@
-
 @import url(https://fonts.googleapis.com/css?family=Open+Sans);
 
 h1 {
     font-size: 4rem;
+    margin: 2rem;
     font-family: 'Friz Quadrata Regular';
     color: white;
 }
@@ -57,65 +57,140 @@ body {
 }
 
 main {
-    width: 50%;
+margin-top: 25vh;
+    width: 40%;
     margin-right: auto;
     margin-left: auto;
+    text-align: center;
+
 }
 
-.search {
-    width: 50%;
-    position: relative;
+#buttons {
+    width: 100%;
+    height: 3rem;
     display: flex;
 }
 
-.searchTerm {
-    width: 80%;
-    border: 3px solid #00B4CC;
-    /*  border-right: none;*/
-    padding: 5px;
-    height: 2rem;
-    border-radius: 5px 5px 5px 5px;
+input {
+    color:white;
+    padding-left:1.5rem;
+    padding-right:1.5rem;
+    width: 100%;
+    background-color: rgba(0, 0, 0, .5);
+    border: none;
     outline: none;
-    /*  color: red;*/
-}.searchTerm {
-    width: 80%;
-    border: 3px solid #00B4CC;
-    /*  border-right: none;*/
-    padding: 5px;
-    height: 2rem;
-    border-radius: 5px 5px 5px 5px;
-    outline: none;
-    /*  color: red;*/
-}
-
-.searchTerm:focus {
-    color: #00B4CC;
-}
-
-/*
-.searchButton {
-    width: 2rem;
-    height: 2rem;
-    outline: none;
-    border: 1px solid #00B4CC;
-    background: #00B4CC;
-    background-image: url('../images/searchicon.png');
-    text-align: center;
-    color: 'rgba(0,0,0,0)';
-    border-radius: 5px 5px 5px 5px;
-    cursor: pointer;
-    font-size: 20px;
-}
-*/
-.searchButton {
 
 }
 
-.searchButton:active{
-    outline: none;
+input::placeholder {
+  color: white;
+  opacity: 1;
 }
-.searchButton:any-link{
-    outline:none;
+
+input:focus::-webkit-input-placeholder
+{
+    color: aqua;
+}
+
+
+input:hover{
+    border-bottom: .25rem solid;
+    border-bottom-color: rgba(255, 255, 255, 1);
+
+}
+
+input:focus {
+    color:aqua;
+    border-bottom: .25rem solid;
+    border-bottom-color: aqua;
+}
+
+select {
+    background-color: rgba(0, 0, 0, .5);
+
+    border: none;
+    outline: none;
+    color: white;
+}
+select:hover{
+    border-bottom: .25rem solid;
+    border-bottom-color: rgba(255, 255, 255, 1);
+    cursor:pointer;
+}
+
+select:focus{
+    color:aqua;
+    border-bottom: .25rem solid;
+    border-bottom-color: aqua;
+    background-color:rgba(0, 0, 0, .5);
+}
+
+
+button:hover{
+    border-bottom: .25rem solid;
+    border-bottom-color: rgba(255, 255, 255, 1);
+}
+
+button {
+    width: 3rem;
+    height: 3rem;
+    background-color: rgba(0, 0, 0, .5);
+    border: none;
+    outline: none;
+    color: white;
+}
+
+button:active {
+
+    border-bottom: .25rem solid;
+    border-bottom-color: aqua;
+}
+button:focus {
+
+    border-bottom: .25rem solid;
+    border-bottom-color: aqua;
+}
+
+
+button:visited {
+    outline: none;
+
+}
+
+button:focus {
+    outline: none;
+
+}
+
+#searchButton:hover{
+
+}
+
+/* Make the container relative */
+.swap-on-hover {
+
+  position: absolute;
+	margin:  0 auto;
+}
+
+/* Select the image and make it absolute to the container */
+.swap-on-hover img {
+
+  position: absolute;
+    bottom: -20px;
+	/* Sets the width and height for the images*/
+    width:2rem;
+    height:2rem;
+}
+
+.swap-on-hover .swap-on-hover__front-image {
+  z-index: 9999;
+/*  transition: opacity .5s linear;*/
+  cursor: pointer;
+}
+
+.swap-on-hover:active > .swap-on-hover__front-image{
+  opacity: 0;
 }
 
 
