@@ -34,8 +34,6 @@ let app = new Vue({
 
         }
 
-
-
     }
 });
 
