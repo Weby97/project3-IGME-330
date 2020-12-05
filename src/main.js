@@ -1,5 +1,6 @@
 import * as lol from './lol.js'
 import * as utils from './utils.js'
+import * as cal from './calendar.js'
 
 
 let app = new Vue({
@@ -31,12 +32,29 @@ let app = new Vue({
         searchClicked() {
 
             lol.listSummonerData(this.summonerInfo.sn, this.summonerInfo.region, summonerDataCallback);
+<<<<<<< HEAD
             localStorage.setItem("summonerInfo",JSON.stringify(this.summonerInfo))
 
             //this.summonerInfo.masteredChampions[0].lastPlayTime
 
             window.location = 'results.html'
+=======
+>>>>>>> origin/main
 
+            // The Calendar magic happens here
+            for(let i = 0; i < 3; i++){
+                let time = utils.getDateFromTimeStamp(this.summonerInfo.masteredChampions[i].lastPlayTime);
+                cal.listCalendarData(time, calendarDataCallback);
+            }
+
+            localStorage.setItem("summonerInfo",JSON.stringify(this.summonerInfo));
+            window.location = 'results.html';
+
+            function calendarDataCallback(e){
+                console.log("calendar data fetched");
+                let calendarData = JSON.parse(e.target.response);
+                console.log(calendarData.response.holidays);
+            }
             function summonerDataCallback(e) {
                 console.log("summoner data fetched")
                 let summonerData = JSON.parse(e.target.response)

@@ -46,7 +46,6 @@ function getSummonerData(url,callback) {
     // 4 - open connection and send the request
     xhr.open("GET", url);
     xhr.send();
-
 }
 function summonerDataLoaded(region,summonerId,callback) {
     //event.target is the xhr object
