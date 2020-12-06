@@ -83,14 +83,20 @@ function dataFinished() {
 
 
 
+for(let champ of app.summonerInfo.masteredChampions){
 
-        }
+    champ.name=lol.getChampionName(champ.championId);
+}
 
-    localStorage.setItem("summonerInfo", JSON.stringify(app.summonerInfo))
+        console.log(app.summonerInfo.masteredChampions[0])
+
     window.location = 'results.html';
-    console.log(app.summonerInfo.masteredChampions[0])
+      localStorage.setItem("summonerInfo", JSON.stringify(app.summonerInfo))
 
 }
+
+
+
 
 function init() {
     let videoUrls = ['camile', 'kindred', 'xayah', 'warwick']

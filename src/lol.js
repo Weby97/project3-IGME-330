@@ -107,5 +107,5 @@ function dataError(e) {
     console.log("An error occurred");
 }
 export {
-    listSummonerData,summonerDataLoaded,listMasteries
+    listSummonerData,summonerDataLoaded,listMasteries,getChampionName
 }

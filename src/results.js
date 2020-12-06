@@ -8,7 +8,7 @@ let app = new Vue({
         masteryLevel: 7,
         masteryImageUrl: 'https://people.rit.edu/cal7114/330/projects/Lear_P3Final/images/m7.png',
         chestAquired: false,
-        lastPlayDate: "Last played 12/5/20202"
+        lastPlayDate: "Last played 12/5/2020"
     },
     created(){
 
