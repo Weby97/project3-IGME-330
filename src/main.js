@@ -93,7 +93,6 @@ function dataFinished() {
     }
 
     console.log(app.summonerInfo.masteredChampions[0])
-    // get rid of this
     //window.location = 'results.html';
     localStorage.setItem("summonerInfo", JSON.stringify(app.summonerInfo))
 
