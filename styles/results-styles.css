@@ -83,6 +83,13 @@ nav {
 
 }
 
+#dateInfo{
+
+    width:80%;
+
+}
+
+
 #masteryIcon {
     z-index: 9;
     position: absolute;

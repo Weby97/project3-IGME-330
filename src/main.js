@@ -12,7 +12,7 @@ let app = new Vue({
         videoNames: ['camile', 'kindred', 'xayah', 'warwick'],
         holidays: [],
         times: [],
-        date:undefined,
+        date: undefined,
         summonerInfo: {
             sn: "AhrilyBadAhri",
             id: "",
@@ -34,6 +34,7 @@ let app = new Vue({
         },
         searchClicked() {
             lol.getSummonerData(this.summonerInfo.sn, this.summonerInfo.region, summonerDataCallback);
+
 
         }
 
@@ -72,6 +73,7 @@ function summonerDataCallback(e) {
         //update vue data variable
         app.summonerInfo.masteredChampions = summonerMasteryData;
 
+
         //done
         summonerDataFinished(storeData);
 
@@ -84,6 +86,9 @@ function summonerDataCallback(e) {
 
 //after all league of legends player data has been retrieved
 function summonerDataFinished() {
+            sortChampionList();
+
+
     //add a 'name' property to each mastered champion to use in the UI
     for (let champ of app.summonerInfo.masteredChampions) {
         champ.name = lol.getChampionName(champ.championId);
@@ -92,9 +97,9 @@ function summonerDataFinished() {
 
     // The Calendar magic happens here
     //for (let i = 0; i < 5; i++) {
-        //      let time = utils.getDateFromTimeStamp(app.summonerInfo.masteredChampions[i].lastPlayTime);
+    //      let time = utils.getDateFromTimeStamp(app.summonerInfo.masteredChampions[i].lastPlayTime);
 
-        app.date = app.summonerInfo.masteredChampions[1].lastPlayDate;
+    app.date = app.summonerInfo.masteredChampions[0].lastPlayDate;
 
 
     //}
@@ -108,7 +113,7 @@ function summonerDataFinished() {
 function calendarDataCallback(e) {
     console.log("calendar data fetched");
 
-  let obj = JSON.parse(e.target.response);
+    let obj = JSON.parse(e.target.response);
 
     console.log(app.date);
     console.log(obj);
@@ -118,17 +123,19 @@ function calendarDataCallback(e) {
     let holiday = obj.response.holidays[0];
 
     console.log(holiday)
-    //debugger;
-
-        if (holiday === undefined) {
-            let date = app.times[0]
-            app.summonerInfo.masteredChampions[1].holiday = `The last time you played this champion, it was: ${date[0]} / ${date[1]} / ${date[2]}`;
-        } else {
-            app.summonerInfo.masteredChampions[1].holiday = `The last time you played this champion, it was: ${holiday.name}`;
-        }
 
 
-storeData();
+    let champName = app.summonerInfo.masteredChampions[0].name;
+
+    if (holiday === undefined) {
+        let date = app.times[0]
+        app.summonerInfo.masteredChampions[0].holiday = `The last time you played ${champName}, it was: ${date[0]} / ${date[1]} / ${date[2]}`;
+    } else {
+        app.summonerInfo.masteredChampions[0].holiday = `The last time you played ${champName}, it was: ${holiday.name}`;
+    }
+
+
+    storeData();
 
 }
 
@@ -142,11 +149,11 @@ function storeData() {
 
 
     //add a 'holiday' property to each mastered champion to use in the UI
-//    let holiCount = 0;
-//    for (let holi of app.holidays) {
-//        app.summonerInfo.masteredChampions[holiCount].holiday = holi;
-//        holiCount++;
-//    }
+    //    let holiCount = 0;
+    //    for (let holi of app.holidays) {
+    //        app.summonerInfo.masteredChampions[holiCount].holiday = holi;
+    //        holiCount++;
+    //    }
 
     app.summonerInfo.summonerIconUrl = 'http://ddragon.leagueoflegends.com/cdn/10.24.1/img/profileicon/' + app.summonerInfo.profileIconId + '.png'
 
@@ -154,6 +161,37 @@ function storeData() {
     localStorage.setItem("summonerInfo", JSON.stringify(app.summonerInfo))
     console.log(app)
     window.location = 'results.html';
+}
+
+function sortChampionList() {
+
+    let champions = app.summonerInfo.masteredChampions;
+    champions.sort(byChestGranted)
+    champions.sort(byLastPlayed)
+
+    function byChestGranted(a, b) {
+        if (a.chestGranted) {
+            return -1;
+        }
+        if (!a.chestGranted) {
+            return 1;
+        }
+        // a must be equal to b
+        return 0;
+    } function byLastPlayed(a, b) {
+        if (a.lastPlayTime<b.lastPlayTime) {
+            return -1;
+        }
+        if (a.lastPlayTime>b.lastPlayTime) {
+            return 1;
+        }
+        // a must be equal to b
+        return 0;
+    }
+
+app.summonerInfo.masteredChampions = champions;
+    console.log(app.summonerInfo.masteredChampions)
+
 }
 
 function init() {

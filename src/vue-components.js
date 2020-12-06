@@ -9,7 +9,7 @@ Vue.component('champion-card', {
 
         <div class='caption'>
         <div class = "name">{{champion.championName}}</div>
-        <div id = "masteryinfo">{{champion.lastPlayDate}}</div>
+        <div id = "dateInfo">{{champion.lastPlayDate}}</div>
         <div v-if='!champion.chestAquired' id = "info1"> <img id='chestIcon' src="images/ChestIconGold.png"> <span>Chest Not Yet Aquired</span></div>
         </div>
     </div>`
