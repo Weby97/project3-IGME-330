@@ -34,7 +34,7 @@ let app = new Vue({
 
     this.summonerInfo=JSON.parse(localStorage.getItem("summonerInfo"));
 
-        for (let i = 0; i < 2; i++) {
+        for (let i = 0; i <= 2; i++) {
             this.threeChampions[i].championName = this.summonerInfo.masteredChampions[i].name,
             this.threeChampions[i].championImageUrl = `https://ddragon.leagueoflegends.com/cdn/img/champion/loading/${this.threeChampions[i].championName}_0.jpg`,
             this.threeChampions[i].masteryLevel = this.summonerInfo.masteredChampions[i].championLevel,

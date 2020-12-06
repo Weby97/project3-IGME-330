@@ -30,11 +30,13 @@
 <body>
 <div id='root'>
     <nav>
-        <div ><span id='sn'>AhrilyBadAhri</span><img id='sicon' src="images/ahriIcon.jpg">  </div>
+
         <profile-header v-bind:summonerInfo='summonerInfo'> </profile-header>
     </nav>
     <div id='championGroup'>
         <champion-card v-bind:champion='champion1'></champion-card>
+        <champion-card v-bind:champion='champion2'></champion-card>
+        <champion-card v-bind:champion='champion3'></champion-card>
 
     </div>
     </div>

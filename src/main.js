@@ -11,7 +11,8 @@ let app = new Vue({
         regions: ["na1", "eun1", "euw1", "br1", "jp1", "kr", "la1", "la2", "oc1", "ru", "tr1"],
         videoNames: ['camile', 'kindred', 'xayah', 'warwick'],
         holidays: [],
-        time: [],
+        times: [],
+        date:undefined,
         summonerInfo: {
             sn: "AhrilyBadAhri",
             id: "",
@@ -48,8 +49,6 @@ function summonerDataCallback(e) {
     //summoner data object
     let summonerData = JSON.parse(e.target.response)
 
-
-
     //update vue data variable
     app.summonerInfo.id = summonerData.id;
 
@@ -74,61 +73,86 @@ function summonerDataCallback(e) {
         app.summonerInfo.masteredChampions = summonerMasteryData;
 
         //done
-        summonerDataFinished();
+        summonerDataFinished(storeData);
+
+
+
+
     }
 
 }
 
 //after all league of legends player data has been retrieved
 function summonerDataFinished() {
-
-
-
-    // The Calendar magic happens here
-    for (let i = 0; i < 3; i++) {
-        let time = utils.getDateFromTimeStamp(app.summonerInfo.masteredChampions[i].lastPlayTime);
-        app.time = time;
-        cal.listCalendarData(time, calendarDataCallback);
-    }
-
     //add a 'name' property to each mastered champion to use in the UI
     for (let champ of app.summonerInfo.masteredChampions) {
         champ.name = lol.getChampionName(champ.championId);
+        champ.lastPlayDate = utils.getDateFromTimeStamp(champ.lastPlayTime);
     }
+
+    // The Calendar magic happens here
+    //for (let i = 0; i < 5; i++) {
+        //      let time = utils.getDateFromTimeStamp(app.summonerInfo.masteredChampions[i].lastPlayTime);
+
+        app.date = app.summonerInfo.masteredChampions[1].lastPlayDate;
+
+
+    //}
+
+    cal.listCalendarData(app.date, calendarDataCallback);
+
+
 
 }
 
 function calendarDataCallback(e) {
     console.log("calendar data fetched");
-    let calendarData = JSON.parse(e.target.response);
-    // On the day you last played this champion, it was ________
-    if (typeof calendarData.response.holidays[0] === 'undefined') {
-        let date = app.time;
-        app.holidays.push(`The last time you played this champion, it was: ${date[0]} / ${date[1]} / ${date[2]}`);
-    } else {
-        app.holidays.push(`The last time you played this champion, it was: ${calendarData.response.holidays[0].name}`);
-    }
 
-    storeData();
+  let obj = JSON.parse(e.target.response);
 
-    console.log(app.holidays);
+    console.log(app.date);
+    console.log(obj);
+    console.log(obj.response);
+    console.log(obj.response.holidays);
+
+    let holiday = obj.response.holidays[0];
+
+    console.log(holiday)
+    //debugger;
+
+        if (holiday === undefined) {
+            let date = app.times[0]
+            app.summonerInfo.masteredChampions[1].holiday = `The last time you played this champion, it was: ${date[0]} / ${date[1]} / ${date[2]}`;
+        } else {
+            app.summonerInfo.masteredChampions[1].holiday = `The last time you played this champion, it was: ${holiday.name}`;
+        }
+
+
+storeData();
+
 }
 
 //update local storage, navigate to next page
-function storeData(){
+function storeData() {
+
+    let holidayArray = app.holidays;
+    console.log(holidayArray[0]);
+
+
+
 
     //add a 'holiday' property to each mastered champion to use in the UI
-    let holiCount = 0;
-    for (let holi of app.holidays) {
-        app.summonerInfo.masteredChampions[holiCount].holiday = holi;
-        holiCount++;
-    }
+//    let holiCount = 0;
+//    for (let holi of app.holidays) {
+//        app.summonerInfo.masteredChampions[holiCount].holiday = holi;
+//        holiCount++;
+//    }
 
-
-    app.summonerInfo.summonerIconUrl='http://ddragon.leagueoflegends.com/cdn/10.24.1/img/profileicon/'+app.summonerInfo.profileIconId+'.png'
+    app.summonerInfo.summonerIconUrl = 'http://ddragon.leagueoflegends.com/cdn/10.24.1/img/profileicon/' + app.summonerInfo.profileIconId + '.png'
 
     //update local storage
     localStorage.setItem("summonerInfo", JSON.stringify(app.summonerInfo))
+    console.log(app)
     window.location = 'results.html';
 }
 
