@@ -162,13 +162,10 @@ button:focus {
 
 }
 
-#searchButton:hover{
-
-}
 
 /* Make the container relative */
 .swap-on-hover {
-
+    display:block;
   position: absolute;
 	margin:  0 auto;
 }
