@@ -138,38 +138,26 @@ function getDateFromTimeStamp(UNIX_timestamp) {
 
 }
 
+function xhrRequest(url,callback) {
+    // 1 - create a new XHR object
+    let xhr = new XMLHttpRequest();
+
+    // 2 - set the onload handler
+    xhr.onload = callback;
+
+    // 3 - set the onerror handler
+    xhr.onerror = dataError;
+
+    // 4 - open connection and send the request
+    xhr.open("GET", url);
+    xhr.send();
+}
+
+
 export {
     getData,
     dataLoaded,
     getRandomInt,
-    getDateFromTimeStamp
+    getDateFromTimeStamp,xhrRequest,dataError
 }
 
-// ----- THIS IS WHERE YOU WILL ADD YOUR EXTRA STUFF TO THE URL -----
-// ----- - - - - BELOW IS EXAMPLE OF WHAT YOU CAN DO - - - - -----
-
-// 4 - parse the user entered term we wish to seach
-// let term = document.querySelector("#searchterm").value;
-// displayTerm = term;
-
-// 5 - get rid of any leading and trailing spaces
-// term = term.trim();
-
-// 6 - encode spaces and special characters
-// term = encodeURIComponent(term);
-
-// 7 - if there's no term to search then bail out of the function (return does this)
-// if(term.length  < 1) return;
-
-// 8 - append the search term to the URL - the parameter name is 'q'
-// url += "&q=" + term;
-
-// 9 - grab the user chosen seach 'limit' from the <select> and append it to the URL
-// limit = document.querySelector("#limit").value;
-// url += "&limit=" + limit;
-
-// 9.5 - Append offset value to the query string
-// url += "&offset=" + offset;
-
-// 10 - update the UI
-// document.querySelector("#status").innerHTML = "<b>Searching for '" + displayTerm + "'</b>";

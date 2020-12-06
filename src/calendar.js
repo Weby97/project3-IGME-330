@@ -1,4 +1,6 @@
 
+import * as utils from "./utils.js"; //helper functions
+
 function listCalendarData(time,callback) {
 
     console.log("fetching calendar data...");
@@ -6,26 +8,7 @@ function listCalendarData(time,callback) {
     cal_url += `&month=${time[0]}&day=${time[1]}&year=${time[2]}`;
 
     //continue to collect champion mastery data with another xhr request
-    getCalendarData(cal_url,callback)
+    utils.xhrRequest(cal_url,callback)
 }
 
-function getCalendarData(url,callback) {
-    // 1 - create a new XHR object
-    let xhr = new XMLHttpRequest();
-
-    // 2 - set the onload handler
-    xhr.onload = callback;
-
-    // 3 - set the onerror handler
-    xhr.onerror = dataError;
-
-    // 4 - open connection and send the request
-    xhr.open("GET", url);
-    xhr.send();
-}
-
-function dataError(e) {
-    console.log("An error occurred");
-}
-
-export { getCalendarData, listCalendarData }
+export { listCalendarData }

@@ -30,56 +30,12 @@
 <body>
 <div id='root'>
     <nav>
-        <div id= 'taskbar'><span id='sn'>AhrilyBadAhri</span><img id='sicon' src="images/ahriIcon.jpg">  </div>
+        <div ><span id='sn'>AhrilyBadAhri</span><img id='sicon' src="images/ahriIcon.jpg">  </div>
+        <profile-header v-bind:summonerInfo='summonerInfo'> </profile-header>
     </nav>
     <div id='championGroup'>
-<!--        <champion-card v-bind:championname='championName' v-bind:championimageurl='championImageUrl' v-bind:masterylevel="masteryLevel" v-bind:masteryimageurl='masteryImageUrl' v-bind:lastplaydate='lastPlayDate' v-bind:chestaquired='chestAquired'></champion-card>-->
-
-
         <champion-card v-bind:champion='champion1'></champion-card>
 
-            <div>
-<!--
-    <div class="championCard">
-        <img id='masteryIcon' src="images/m6.png">
-        <div class="image-cropper">
-            <img src="https://ddragon.leagueoflegends.com/cdn/img/champion/loading/Lux_0.jpg" alt="avatar" class="profile-pic">
-        </div>
-
-        <div class='caption'>
-        <div class = "name">Lux</div>
-        <div id = "masteryinfo">Last Played 12/4/2020</div>
-        <div id = "info1"> <img id='chestIcon' src="images/ChestIconGold.png"> <span>Chest Not Yet Aquired</span></div>
-        </div>
-    </div>
-
-    <div class="championCard" id='middle'>
-        <img id='masteryIcon' src="images/m7.png">
-        <div id='caption'>
-        <div class="image-cropper">
-            <img src="https://ddragon.leagueoflegends.com/cdn/img/champion/loading/Poppy_0.jpg" alt="avatar" class="profile-pic">
-        </div>
-        <div class = 'caption'>
-        <div class = "name">Ahri</div>
-        <div id = "info1"> <img id='chestIcon' src="images/ChestIconGold.png"> <span>Chest Not Yet Aquired</span></div>
-        </div>
-    </div>
-        </div>
-
-    <div class="championCard">
-        <img id='masteryIcon' src="images/m7.png">
-        <div class="image-cropper">
-            <img src="https://ddragon.leagueoflegends.com/cdn/img/champion/loading/Ahri_0.jpg" alt="avatar" class="profile-pic">
-        </div>
-<div class = 'caption'>
-        <div class = "name">Ahri</div>
-        <div id = "masteryinfo">Last Played 12/4/2020</div>
-        </div>
-    </div>
--->
-
-
-    </div>
     </div>
     </div>
         </body>

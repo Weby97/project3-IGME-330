@@ -2,7 +2,7 @@ let app = new Vue({
     el: '#root',
 
     data: {
-        summonerInfo: JSON.parse(localStorage.getItem("summonerInfo")),
+        summonerInfo: {},
         threeChampions: [{
             championName: '',
             championImageUrl: ``,
@@ -30,7 +30,9 @@ let app = new Vue({
         champion3:{},
 
     },
-    created() {
+    created(){
+
+    this.summonerInfo=JSON.parse(localStorage.getItem("summonerInfo"));
 
         for (let i = 0; i < 2; i++) {
             this.threeChampions[i].championName = this.summonerInfo.masteredChampions[i].name,
@@ -39,18 +41,12 @@ let app = new Vue({
             this.threeChampions[i].masteryImageUrl = `https://people.rit.edu/cal7114/330/projects/Lear_P3Final/images/m${this.threeChampions[i].masteryLevel}.png`,
             this.threeChampions[i].chestAquired = this.summonerInfo.masteredChampions[i].chestGranted,
             this.threeChampions[i].lastPlayDate = this.summonerInfo.masteredChampions[i].holiday
-
-
-
         }
 
         this.champion1=this.threeChampions[0],
         this.champion2=this.threeChampions[1],
-        this.champion3=this.threeChampions[2],
+        this.champion3=this.threeChampions[2]
 
-
-
-        console.log(this)
     },
     methods: {
 
