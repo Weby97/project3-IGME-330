@@ -41,8 +41,8 @@ function calendarDataCallback(e) {
     console.log("calendar data fetched");
     let calendarData = JSON.parse(e.target.response);
     // On the day you last played this champion, it was ________
-    for(let j = 0; j < 3; j++){
-        if(typeof calendarData.response.holidays[j].name === 'undefined'){
+    for (let j = 0; j < 3; j++) {
+        if (typeof calendarData.response.holidays[j].name === 'undefined') {
             let date = utils.getDateFromTimeStamp(app.summonerInfo.masteredChampions[j].lastPlayTime);
             app.summonerInfo.masteredChampions[j].holiday = `The last time you played this champion, it was: ${date[0]} / ${date[1]} / ${date[2]}`;
         } else {
@@ -76,22 +76,22 @@ function summonerDataCallback(e) {
 
 function dataFinished() {
     // The Calendar magic happens here
-    for(let i = 0; i < 3; i++){
+    for (let i = 0; i < 3; i++) {
         let time = utils.getDateFromTimeStamp(app.summonerInfo.masteredChampions[i].lastPlayTime);
         cal.listCalendarData(time, calendarDataCallback);
     }
 
 
 
-for(let champ of app.summonerInfo.masteredChampions){
+    for (let champ of app.summonerInfo.masteredChampions) {
 
-    champ.name=lol.getChampionName(champ.championId);
-}
+        champ.name = lol.getChampionName(champ.championId);
+    }
 
-        console.log(app.summonerInfo.masteredChampions[0])
+    console.log(app.summonerInfo.masteredChampions[0])
 
     window.location = 'results.html';
-      localStorage.setItem("summonerInfo", JSON.stringify(app.summonerInfo))
+    localStorage.setItem("summonerInfo", JSON.stringify(app.summonerInfo))
 
 }
 
