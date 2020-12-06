@@ -10,7 +10,8 @@ let app = new Vue({
         title: "What Champion Should You Play?",
         regions: ["na1", "eun1", "euw1", "br1", "jp1", "kr", "la1", "la2", "oc1", "ru", "tr1"],
         videoNames: ['camile', 'kindred', 'xayah', 'warwick'],
-
+        holidays: [],
+        time: [],
         summonerInfo: {
             sn: "AhrilyBadAhri",
             id: "",
@@ -41,16 +42,14 @@ function calendarDataCallback(e) {
     console.log("calendar data fetched");
     let calendarData = JSON.parse(e.target.response);
     // On the day you last played this champion, it was ________
-    for(let j = 0; j < 3; j++){
-        if(typeof calendarData.response.holidays[j].name === 'undefined'){
-            let date = utils.getDateFromTimeStamp(app.summonerInfo.masteredChampions[j].lastPlayTime);
-            app.summonerInfo.masteredChampions[j].holiday = `The last time you played this champion, it was: ${date[0]} / ${date[1]} / ${date[2]}`;
-        } else {
-            app.summonerInfo.masteredChampions[j].holiday = `The last time you played this champion, it was: ${calendarData.response.holidays[j].name}`;
-        }
+    if (typeof calendarData.response.holidays[0] === 'undefined') {
+        let date = app.time;
+        app.holidays.push(`The last time you played this champion, it was: ${date[0]} / ${date[1]} / ${date[2]}`);
+    } else {
+        app.holidays.push(`The last time you played this champion, it was: ${calendarData.response.holidays[0].name}`);
     }
 
-    console.log(calendarData.response.holidays[0].name);
+    console.log(app.holidays);
 }
 
 function summonerDataCallback(e) {
@@ -76,22 +75,27 @@ function summonerDataCallback(e) {
 
 function dataFinished() {
     // The Calendar magic happens here
-    for(let i = 0; i < 3; i++){
+    for (let i = 0; i < 3; i++) {
         let time = utils.getDateFromTimeStamp(app.summonerInfo.masteredChampions[i].lastPlayTime);
+        app.time = time;
         cal.listCalendarData(time, calendarDataCallback);
     }
 
+    let holiCount = 0;
+    for (let holi of app.holidays) {
+        app.summonerInfo.masteredChampions[holiCount].holiday = holi;
+        holiCount++;
+    }
 
+    for (let champ of app.summonerInfo.masteredChampions) {
 
-for(let champ of app.summonerInfo.masteredChampions){
+        champ.name = lol.getChampionName(champ.championId);
+    }
 
-    champ.name=lol.getChampionName(champ.championId);
-}
+    console.log(app.summonerInfo.masteredChampions[0])
 
-        console.log(app.summonerInfo.masteredChampions[0])
-
-    window.location = 'results.html';
-      localStorage.setItem("summonerInfo", JSON.stringify(app.summonerInfo))
+    //window.location = 'results.html';
+    localStorage.setItem("summonerInfo", JSON.stringify(app.summonerInfo))
 
 }
 
