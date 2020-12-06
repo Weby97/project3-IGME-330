@@ -29,7 +29,7 @@
     <div id='root'>
 
         <div class="fullscreen-bg">
-            <video loop muted autoplay class="fullscreen-bg__video" poster="media/c-o-frel-lor-14.jpg" src="media/xayah.webm" type="video/webm">
+            <video loop muted autoplay class="fullscreen-bg__video" poster="media/c-o-frel-lor-14.jpg" src="media/xayah.webm">
             </video>
         </div>
 
@@ -37,24 +37,18 @@
             <h1>{{title}}</h1>
 
             <div id='buttons'>
-
-
                 <input placeholder="Enter your summoner name" v-model="summonerInfo.sn">
                 <select id="regionDropdown" v-model="summonerInfo.region">
                     <option v-for="r in regions" v-bind:regions="r">{{r}}</option>
                 </select>
 
                 <button id="searchButton" type="submit" @click='searchClicked' @hover='searchHover'>
-                    <figure class="swap-on-hover">
-                        <image  class="swap-on-hover__front-image" src="images/searchicon.png"> </image>
-                        <image class="swap-on-hover__back-image" src="images/searchiconfocus.png" > </image>
-                    </figure>
+                    <span class="swap-on-hover">
+                        <img class="swap-on-hover__front-image" src="images/searchicon.png" alt="Search icon looks like a magnifying glass"/>
+                        <img class="swap-on-hover__back-image" src="images/searchiconfocus.png" alt="Search icon looks like a magnifying glass. When hovered, changes color"/>
+                    </span>
                 </button>
-
-
-
             </div>
-
 
         </main>
     </div>
