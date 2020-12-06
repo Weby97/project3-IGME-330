@@ -49,6 +49,8 @@ function calendarDataCallback(e) {
         app.holidays.push(`The last time you played this champion, it was: ${calendarData.response.holidays[0].name}`);
     }
 
+    storeData();
+
     console.log(app.holidays);
 }
 
@@ -81,24 +83,29 @@ function dataFinished() {
         cal.listCalendarData(time, calendarDataCallback);
     }
 
-    let holiCount = 0;
-    for (let holi of app.holidays) {
-        app.summonerInfo.masteredChampions[holiCount].holiday = holi;
-        holiCount++;
-    }
+
 
     for (let champ of app.summonerInfo.masteredChampions) {
 
         champ.name = lol.getChampionName(champ.championId);
     }
 
-    console.log(app.summonerInfo.masteredChampions[0])
-    //window.location = 'results.html';
-    localStorage.setItem("summonerInfo", JSON.stringify(app.summonerInfo))
+    //console.log(app.summonerInfo.masteredChampions[0])
+
+
 
 }
 
-
+function storeData(){
+    let holiCount = 0;
+    console.log(app.holidays)
+    for (let holi of app.holidays) {
+        app.summonerInfo.masteredChampions[holiCount].holiday = holi;
+        holiCount++;
+    }
+    localStorage.setItem("summonerInfo", JSON.stringify(app.summonerInfo))
+   window.location = 'results.html';
+}
 
 
 function init() {

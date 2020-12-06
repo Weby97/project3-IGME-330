@@ -33,7 +33,10 @@
         <div id= 'taskbar'><span id='sn'>AhrilyBadAhri</span><img id='sicon' src="images/ahriIcon.jpg">  </div>
     </nav>
     <div id='championGroup'>
-        <champion-card v-bind:championname='championName' v-bind:championimageurl='championImageUrl' v-bind:masterylevel="masteryLevel" v-bind:masteryimageurl='masteryImageUrl' v-bind:lastplaydate='lastPlayDate' v-bind:chestaquired='chestAquired'></champion-card>
+<!--        <champion-card v-bind:championname='championName' v-bind:championimageurl='championImageUrl' v-bind:masterylevel="masteryLevel" v-bind:masteryimageurl='masteryImageUrl' v-bind:lastplaydate='lastPlayDate' v-bind:chestaquired='chestAquired'></champion-card>-->
+
+
+        <champion-card v-bind:champion='champion1'></champion-card>
 
             <div>
 <!--
@@ -77,5 +80,6 @@
 
 
     </div>
-
+    </div>
+    </div>
         </body>
