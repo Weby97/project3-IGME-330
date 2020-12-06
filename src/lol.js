@@ -33,7 +33,6 @@ function getSummonerData(summonerName,region,callback) {
     //make XHR request
     utils.xhrRequest(LOL_PROXY_URL,callback);
 
-
 }
 
 //second endpoint documentation here: https://developer.riotgames.com/apis#champion-mastery-v4/GET_getAllChampionMasteries
