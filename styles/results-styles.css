@@ -1,33 +1,108 @@
-*{
+* {
     box-sizing: border-box;
     margin: 0px;
-    padding:0px;
-    border:0px;
+    padding: 0px;
+    border: 0px;
 }
+
 body {
     font-family: 'Open Sans', sans-serif;
     color: black;
 }
 
-#championCard{
-    margin: 2rem;
-/*    background-color:red;*/
-    box-shadow: 28px black;
+#championGroup {
+    display: flex;
+    align-items: center;
+    justify-content: center;
     text-align: center;
-    width:308px;
+    margin-top: 8rem;
+
+    margin-left: auto;
+    margin-right: auto;
+}
+
+#taskbar {}
+
+nav {
+    height: 6rem;
+    background-color: #444444;
+    display: flex;
+    width: 100%;
+    flex-direction: row-reverse;
+}
+
+#sn {
+    color: white;
+    font-size: 1.3rem;
+    margin: 2rem;
+}
+
+#sicon {
+    width: 6rem;
 
 }
 
-.name{
+.championCard {
+
+    display: flex;
+    align-items: center;
+    flex-flow:column;
+    justify-content: center;
+/*    height: 600px;*/
+    margin-left:1rem;
+    margin-right:1rem;
+    /*    background-color:red;*/
+    /*    box-shadow: 28px black;*/
+    text-align: center;
+    /*    width:308px;*/
+    /*    text-align: center;*/
+
+}
+
+
+.caption{
+    height:3rem;
+}
+
+#middle {
+    margin-bottom: 6rem;
+}
+
+#info1 {
     margin: 1rem;
-    font-size:2rem;
+}
+
+#info1 span {
+    color: #F1C247;
+    margin-left: .2rem;
+    font-weight: bold;
+}
+
+#chestIcon {
+    width: 2rem;
+
+}
+
+#masteryIcon {
+    z-index: 9;
+    position: absolute;
+
+    width: 7rem;
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 6rem;
+}
+
+.name {
+    margin: 1rem;
+    margin-top:2rem;
+    font-size: 2rem;
 }
 
 .image-cropper {
     width: 308px;
     height: 308px;
-/*    margin: none;*/
+    /*    margin: none;*/
     overflow: hidden;
     border-radius: 50%;
 }
-

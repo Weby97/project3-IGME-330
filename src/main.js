@@ -69,6 +69,10 @@ function dataFinished() {
             window.location = 'results.html';
             console.log(app.summonerInfo.masteredChampions[0])
 
+
+
+
+
         }
 
 function init() {

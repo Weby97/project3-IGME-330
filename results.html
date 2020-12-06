@@ -22,22 +22,60 @@
 
     <!-- Load the following for BootstrapVueIcons support -->
     <script src="https://unpkg.com/bootstrap-vue@latest/dist/bootstrap-vue-icons.js"></script>
+    <script src="src/vue-components.js"></script>
 
 
 
 </head>
-
+<body>
 <div id='root'>
     <nav>
-        <h1></h1>
+        <div id= 'taskbar'><span id='sn'>AhrilyBadAhri</span><img id='sicon' src="images/ahriIcon.jpg">  </div>
     </nav>
-    <div id="championCard">
+    <div id='championGroup'>
+        <champion-card v-bind:championname='championName' v-bind:championimageurl='championImageUrl' v-bind:masterylevel="masteryLevel" v-bind:masteryimageurl='masteryImageUrl' v-bind:lastplaydate='lastPlayDate' v-bind:chestaquired='chestAquired'></champion-card>
+
+            <div>
+<!--
+    <div class="championCard">
+        <img id='masteryIcon' src="images/m6.png">
         <div class="image-cropper">
-            <img src="https://ddragon.leagueoflegends.com/cdn/img/champion/loading/Aatrox_0.jpg" alt="avatar" class="profile-pic">
+            <img src="https://ddragon.leagueoflegends.com/cdn/img/champion/loading/Lux_0.jpg" alt="avatar" class="profile-pic">
         </div>
-        <div class = "name">Aatrox</div>
-        <div id = "masteryinfo">Mastery Level 4</div>
-        <div id = "info1"> Chest not yet aquired</div>
+
+        <div class='caption'>
+        <div class = "name">Lux</div>
+        <div id = "masteryinfo">Last Played 12/4/2020</div>
+        <div id = "info1"> <img id='chestIcon' src="images/ChestIconGold.png"> <span>Chest Not Yet Aquired</span></div>
+        </div>
     </div>
 
-</div>
+    <div class="championCard" id='middle'>
+        <img id='masteryIcon' src="images/m7.png">
+        <div id='caption'>
+        <div class="image-cropper">
+            <img src="https://ddragon.leagueoflegends.com/cdn/img/champion/loading/Poppy_0.jpg" alt="avatar" class="profile-pic">
+        </div>
+        <div class = 'caption'>
+        <div class = "name">Ahri</div>
+        <div id = "info1"> <img id='chestIcon' src="images/ChestIconGold.png"> <span>Chest Not Yet Aquired</span></div>
+        </div>
+    </div>
+        </div>
+
+    <div class="championCard">
+        <img id='masteryIcon' src="images/m7.png">
+        <div class="image-cropper">
+            <img src="https://ddragon.leagueoflegends.com/cdn/img/champion/loading/Ahri_0.jpg" alt="avatar" class="profile-pic">
+        </div>
+<div class = 'caption'>
+        <div class = "name">Ahri</div>
+        <div id = "masteryinfo">Last Played 12/4/2020</div>
+        </div>
+    </div>
+-->
+
+
+    </div>
+
+        </body>
