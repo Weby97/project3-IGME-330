@@ -81,19 +81,16 @@ function dataFinished() {
         cal.listCalendarData(time, calendarDataCallback);
     }
 
-<<<<<<< HEAD
-
 
 
 
         }
-=======
+
     localStorage.setItem("summonerInfo", JSON.stringify(app.summonerInfo))
     window.location = 'results.html';
     console.log(app.summonerInfo.masteredChampions[0])
 
 }
->>>>>>> origin/main
 
 function init() {
     let videoUrls = ['camile', 'kindred', 'xayah', 'warwick']
