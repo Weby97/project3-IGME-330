@@ -114,10 +114,6 @@ function dataLoaded(e) {
     let obj = JSON.parse(xhr.responseText);
     //console.log(obj)
 
-
-
-    ////CHASE: lets make this function work for any api, then do the further parsing in our own functions
-
 }
 
 function dataError(e) {
@@ -132,7 +128,7 @@ function getDateFromTimeStamp(UNIX_timestamp) {
     var a = new Date(UNIX_timestamp);
     var months = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'];
     var year = a.getFullYear();
-    var month = months[a.getMonth()];
+    var month = a.getMonth();
     var date = a.getDate();
     var hour = a.getHours();
     var min = a.getMinutes();
