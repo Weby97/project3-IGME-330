@@ -37,11 +37,11 @@
             <h1>{{title}}</h1>
 
             <div id='buttons'>
+                <p id="errorMessage"></p>
                 <input placeholder="Enter your summoner name" v-model="summonerInfo.sn">
                 <select id="regionDropdown" v-model="summonerInfo.region">
                     <option v-for="r in regions" v-bind:regions="r">{{r}}</option>
                 </select>
-
                 <button id="searchButton" type="submit" @click='searchClicked' @hover='searchHover'>
                     <span class="swap-on-hover">
                         <img class="swap-on-hover__front-image" src="images/searchicon.png" alt="Search icon looks like a magnifying glass"/>
@@ -49,6 +49,7 @@
                     </span>
                 </button>
             </div>
+            <div class="loader"></div>
 
         </main>
     </div>

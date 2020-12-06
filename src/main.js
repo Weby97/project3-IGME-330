@@ -21,7 +21,6 @@ let app = new Vue({
 
         },
 
-
     },
     methods: {
 
@@ -33,6 +32,10 @@ let app = new Vue({
             searchHoverButton.style.display = block;
         },
         searchClicked() {
+            console.log("Searched Entered")
+            let x = document.querySelector(".loader");
+            x.style.display = "block";
+
             lol.getSummonerData(this.summonerInfo.sn, this.summonerInfo.region, summonerDataCallback);
 
 
@@ -46,9 +49,17 @@ function summonerDataCallback(e) {
 
     //console status message
     console.log("summoner data fetched")
-
-    //summoner data object
-    let summonerData = JSON.parse(e.target.response)
+    let summonerData;
+    //summoner data object --
+    try{
+        summonerData = JSON.parse(e.target.response)
+    }
+    catch(err)
+    {
+        let x = document.querySelector(".loader");
+        x.style.display = "none";
+        document.querySelector("#errorMessage").innerHTML = "Invalid Name";
+    }
 
     //update vue data variable
     app.summonerInfo.id = summonerData.id;
@@ -77,9 +88,6 @@ function summonerDataCallback(e) {
         //done
         summonerDataFinished(storeData);
 
-
-
-
     }
 
 }
@@ -99,7 +107,11 @@ function summonerDataFinished() {
     //for (let i = 0; i < 5; i++) {
     //      let time = utils.getDateFromTimeStamp(app.summonerInfo.masteredChampions[i].lastPlayTime);
 
+<<<<<<< HEAD
     app.date = app.summonerInfo.masteredChampions[0].lastPlayDate;
+=======
+    app.date = app.summonerInfo.masteredChampions[1].lastPlayDate;
+>>>>>>> origin/main
 
 
     //}
@@ -112,7 +124,12 @@ function summonerDataFinished() {
 
 function calendarDataCallback(e) {
     console.log("calendar data fetched");
+<<<<<<< HEAD
 
+=======
+    let x = document.querySelector(".loader");
+    x.style.display = "none";
+>>>>>>> origin/main
     let obj = JSON.parse(e.target.response);
 
     console.log(app.date);
@@ -124,9 +141,19 @@ function calendarDataCallback(e) {
 
     console.log(holiday)
 
+<<<<<<< HEAD
+=======
+    if (holiday === undefined) {
+        let date = app.times[0]
+        app.summonerInfo.masteredChampions[1].holiday = `The last time you played this champion, it was: ${date[0]} / ${date[1]} / ${date[2]}`;
+    } else {
+        app.summonerInfo.masteredChampions[1].holiday = `The last time you played this champion, it was: ${holiday.name}`;
+    }
+>>>>>>> origin/main
 
     let champName = app.summonerInfo.masteredChampions[0].name;
 
+<<<<<<< HEAD
     if (holiday === undefined) {
         let date = app.times[0]
         app.summonerInfo.masteredChampions[0].holiday = `The last time you played ${champName}, it was: ${date[0]} / ${date[1]} / ${date[2]}`;
@@ -135,6 +162,8 @@ function calendarDataCallback(e) {
     }
 
 
+=======
+>>>>>>> origin/main
     storeData();
 
 }
