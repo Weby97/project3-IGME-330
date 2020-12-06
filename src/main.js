@@ -49,7 +49,7 @@ function summonerDataCallback(e) {
     //console status message
     console.log("summoner data fetched")
     let summonerData;
-    //summoner data object
+    //summoner data object --
     try{
         summonerData = JSON.parse(e.target.response)
     }
