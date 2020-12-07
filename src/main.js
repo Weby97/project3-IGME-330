@@ -149,18 +149,13 @@ function storeData() {
 
     //let holidayArray = app.holidays;
 
-    //add a 'holiday' property to each mastered champion to use in the UI
-    //    let holiCount = 0;
-    //    for (let holi of app.holidays) {
-    //        app.summonerInfo.masteredChampions[holiCount].holiday = holi;
-    //        holiCount++;
-    //    }
-
+    // fetch icon from open source
     app.summonerInfo.summonerIconUrl = 'http://ddragon.leagueoflegends.com/cdn/10.24.1/img/profileicon/' + app.summonerInfo.profileIconId + '.png'
 
     //update local storage
     localStorage.setItem("summonerInfo", JSON.stringify(app.summonerInfo))
-    //console.log(app)
+
+    //  Move to the next page.
     window.location = 'results.html';
 }
 
