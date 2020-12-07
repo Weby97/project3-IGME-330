@@ -15,7 +15,7 @@ let championData = riotData.leagueChampionData.data;//list of all champions in l
 let listCount = 10; //ammount of champions listed to user
 
 //first endpoint documentation here: https://developer.riotgames.com/apis#account-v1/GET_getByPuuid
-function getSummonerData(summonerName,region,callback) {
+function getSummonerData(summonerName, region, callback) {
 
     //console status message
     console.log("fetching summoner data...");
@@ -25,18 +25,23 @@ function getSummonerData(summonerName,region,callback) {
 
     //bail out if nothing is entered
     summonerName = encodeURIComponent(summonerName);
-    if (summonerName.length < 1) return;
+    if (summonerName.length < 1) {
+        let x = document.querySelector(".loader");
+        x.style.display = "none";
+        document.querySelector("#errorMessage").innerHTML = "Enter Name"
+        return;
+    }
 
     //url to fetch summoner data from proxy server on Banjo
     let LOL_PROXY_URL = `https://people.rit.edu/cal7114/330/projects/Lear_P3Final/lol-proxy.php?region=${region}&summonerName=${summonerName}`;
 
     //make XHR request
-    utils.xhrRequest(LOL_PROXY_URL,callback);
+    utils.xhrRequest(LOL_PROXY_URL, callback);
 
 }
 
 //second endpoint documentation here: https://developer.riotgames.com/apis#champion-mastery-v4/GET_getAllChampionMasteries
-function getMasteries(summonerInfo,callback) {
+function getMasteries(summonerInfo, callback) {
 
     //console status message
     console.log('fetching mastery data...');
@@ -51,7 +56,7 @@ function getMasteries(summonerInfo,callback) {
     console.log(LOL_MASTERY_PROXY_URL)
 
     //make XHR request
-    utils.xhrRequest(LOL_MASTERY_PROXY_URL,callback);
+    utils.xhrRequest(LOL_MASTERY_PROXY_URL, callback);
 
 }
 
@@ -71,5 +76,5 @@ function getChampionName(masteredChampionID) {
 }
 
 export {
-    getSummonerData,getMasteries,getChampionName
+    getSummonerData, getMasteries, getChampionName
 }
