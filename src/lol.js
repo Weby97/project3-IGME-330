@@ -18,7 +18,7 @@ let listCount = 10; //ammount of champions listed to user
 function getSummonerData(summonerName, region, callback) {
 
     //console status message
-    console.log("fetching summoner data...");
+    //console.log("fetching summoner data...");
 
     //string formatting
     summonerName = summonerName.trim().split(" ").join("");
@@ -44,7 +44,7 @@ function getSummonerData(summonerName, region, callback) {
 function getMasteries(summonerInfo, callback) {
 
     //console status message
-    console.log('fetching mastery data...');
+    //console.log('fetching mastery data...');
 
     //enpoint parameters (strings)
     let region = summonerInfo.region;
@@ -53,7 +53,7 @@ function getMasteries(summonerInfo, callback) {
     ///url to fetch summoner mastery data from proxy server on Banjo
     let LOL_MASTERY_PROXY_URL = `https://people.rit.edu/cal7114/330/projects/Lear_P3Final/lol-mastery-proxy.php?region=${region}&id=${summonerId}`
 
-    console.log(LOL_MASTERY_PROXY_URL)
+    //console.log(LOL_MASTERY_PROXY_URL)
 
     //make XHR request
     utils.xhrRequest(LOL_MASTERY_PROXY_URL, callback);

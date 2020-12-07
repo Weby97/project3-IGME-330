@@ -39,13 +39,13 @@ let app = new Vue({
             searchHoverButton.style.display = block;
         },
         searchClicked() {
-            console.log("Searched Entered")
+            //console.log("Searched Entered")
             let x = document.querySelector(".loader");
             x.style.display = "block";
 
             localStorage.setItem('sortType', JSON.stringify(app.sortType))
             localStorage.setItem('summonerInfo', JSON.stringify(app.summonerInfo))
-            console.log(app.summonerInfo)
+            //console.log(app.summonerInfo)
 
             lol.getSummonerData(this.summonerInfo.sn, this.summonerInfo.region, summonerDataCallback);
 
@@ -66,7 +66,7 @@ let app = new Vue({
 function summonerDataCallback(e) {
 
     //console status message
-    console.log("summoner data fetched")
+    //console.log("summoner data fetched")
     let summonerData;
     //summoner data object --
     try {
@@ -90,9 +90,9 @@ function summonerDataCallback(e) {
     function masteryCallback(e) {
 
         //console status message
-        console.log('mastery data fetched')
+        //console.log('mastery data fetched')
 
-        console.log(app)
+        //console.log(app)
 
         //mastery data object
         let summonerMasteryData = JSON.parse(e.target.response)
@@ -135,13 +135,13 @@ function summonerDataFinished() {
 }
 
 function calendarDataCallback(e) {
-    console.log("calendar data fetched");
+    //console.log("calendar data fetched");
 
     let x = document.querySelector(".loader");
     x.style.display = "none";
     let obj = JSON.parse(e.target.response);
 
-    console.log(obj)
+    //console.log(obj)
 
     let holiday = obj.response.holidays[0];
 
@@ -152,7 +152,7 @@ function calendarDataCallback(e) {
 
     if (!holiday) {
         let date = app.date
-        console.log(date);
+        //console.log(date);
 
         app.summonerInfo.masteredChampions[0].holiday = `The last time you played ${champName}, it was: ${date["0"]} / ${date["1"]} / ${date["2"]}`;
     } else {
@@ -183,7 +183,7 @@ function storeData() {
 
     //update local storage
     localStorage.setItem("summonerInfo", JSON.stringify(app.summonerInfo))
-    console.log(app)
+    //console.log(app)
     window.location = 'results.html';
 }
 
@@ -227,7 +227,7 @@ function sortChampionList() {
     }
 
     app.summonerInfo.masteredChampions = champions;
-    console.log(app.summonerInfo.masteredChampions)
+    //console.log(app.summonerInfo.masteredChampions)
 
 }
 

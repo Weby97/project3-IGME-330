@@ -3,7 +3,7 @@ import * as utils from "./utils.js"; //helper functions
 
 function listCalendarData(time,callback) {
 
-    console.log("fetching calendar data...");
+    //console.log("fetching calendar data...");
 
 //    console.log(time)
 //    for(let time of times){

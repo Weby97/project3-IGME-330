@@ -9,7 +9,7 @@ let year = 2019
 let month = 3
 
 function searchButtonClicked(e) {
-    console.log("searchButtonClicked() called");
+    //console.log("searchButtonClicked() called");
     if (e.target.id == "search") {
         offset = 0;
         if (!searchedFirst) {
@@ -30,7 +30,7 @@ function searchButtonClicked(e) {
     url += "?api_key=" + CALENDAR_KEY;
 
     // 11 - see what the URL looks like
-    console.log(url);
+    //console.log(url);
 
     // 12 - Request Data!
     getData(url);
@@ -70,7 +70,7 @@ function dataLoaded(e) {
 }
 
 function dataError(e) {
-    console.log("An error occurred");
+    //console.log("An error occurred");
 }
 
 function getRandomInt(min, max) {
