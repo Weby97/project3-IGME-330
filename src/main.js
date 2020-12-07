@@ -24,10 +24,6 @@ let app = new Vue({
 
 
     },
-    mounted() {
-
-
-    },
 
     methods: {
 
@@ -39,13 +35,11 @@ let app = new Vue({
             searchHoverButton.style.display = block;
         },
         searchClicked() {
-            //console.log("Searched Entered")
             let x = document.querySelector(".loader");
             x.style.display = "block";
 
-            localStorage.setItem('sortType', JSON.stringify(app.sortType))
-            localStorage.setItem('summonerInfo', JSON.stringify(app.summonerInfo))
-            //console.log(app.summonerInfo)
+            localStorage.setItem('sortType', JSON.stringify(app.sortType));
+            localStorage.setItem('summonerInfo', JSON.stringify(app.summonerInfo));
 
             lol.getSummonerData(this.summonerInfo.sn, this.summonerInfo.region, summonerDataCallback);
 
@@ -65,8 +59,6 @@ let app = new Vue({
 //fetch all data from
 function summonerDataCallback(e) {
 
-    //console status message
-    //console.log("summoner data fetched")
     let summonerData;
     //summoner data object --
     try {
@@ -89,17 +81,11 @@ function summonerDataCallback(e) {
     //callback function
     function masteryCallback(e) {
 
-        //console status message
-        //console.log('mastery data fetched')
-
-        //console.log(app)
-
         //mastery data object
         let summonerMasteryData = JSON.parse(e.target.response)
 
         //update vue data variable
-        app.summonerInfo.masteredChampions = summonerMasteryData;
-
+        app.summonerInfo.masteredChampions = summonerMasteryData
 
         //done
         summonerDataFinished(storeData);
@@ -135,13 +121,10 @@ function summonerDataFinished() {
 }
 
 function calendarDataCallback(e) {
-    //console.log("calendar data fetched");
 
     let x = document.querySelector(".loader");
     x.style.display = "none";
     let obj = JSON.parse(e.target.response);
-
-    //console.log(obj)
 
     let holiday = obj.response.holidays[0];
 
@@ -152,8 +135,6 @@ function calendarDataCallback(e) {
 
     if (!holiday) {
         let date = app.date
-        //console.log(date);
-
         app.summonerInfo.masteredChampions[0].holiday = `The last time you played ${champName}, it was: ${date["0"]} / ${date["1"]} / ${date["2"]}`;
     } else {
         app.summonerInfo.masteredChampions[0].holiday = `The last time you played ${champName}, it was: ${holiday.name}`;
@@ -166,11 +147,7 @@ function calendarDataCallback(e) {
 //update local storage, navigate to next page
 function storeData() {
 
-    let holidayArray = app.holidays;
-
-
-
-
+    //let holidayArray = app.holidays;
 
     //add a 'holiday' property to each mastered champion to use in the UI
     //    let holiCount = 0;
@@ -187,8 +164,8 @@ function storeData() {
     window.location = 'results.html';
 }
 
+// Sorting function for the champions to be filtered by before showing on the second page
 function sortChampionList() {
-
 
     let sortProtocol = app.sortType;
 
@@ -232,8 +209,6 @@ function sortChampionList() {
 }
 
 function init() {
-
-
     let lastSummonerInfo = localStorage.getItem('summonerInfo');
     if (lastSummonerInfo != undefined) {
         app.summonerInfo = JSON.parse(lastSummonerInfo);
