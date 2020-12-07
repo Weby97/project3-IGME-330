@@ -1,6 +1,4 @@
-
 import * as lol from './lol.js'
-
 
 // ----- VALUES -----
 let displayTerm = "";
@@ -9,45 +7,6 @@ let searchedFirst = false;
 let day = 14
 let year = 2019
 let month = 3
-
-//let cal = new Vue({
-//    el: '#calendar',
-//    data: {
-//        title: "Calendar Events",
-//        result: {}
-//    },
-//    created() {
-//        this.search(`https://calendarific.com/api/v2/holidays?&api_key=b3de703f8dcbb296bcf442aa7481ea5561f8adb8&country=US&month=${month}&day=${day}&year=${year}`)
-//    },
-//    methods: {
-//        search(url) {
-//            fetch(url)
-//                .then(response => {
-//                    if (!response.ok) {
-//                        throw Error(`ERROR: ${response.statusText}`);
-//                    }
-//                    return response.json();
-//                })
-//                .then(json => {
-//                    console.log(json.response);
-//                    this.result = json.response;
-//                    let holidayArr = this.result.holidays;
-//                    let tableEle = document.querySelector("#calData");
-//                    for (let i = 0; i < holidayArr.length; i++) {
-//                        let holiEle = document.createElement("tr");
-//                        let holiData = document.createElement("td");
-//                        holiData.innerHTML = holidayArr[i].name;
-//                        holiEle.appendChild(holiData);
-//                        holiData.innerHTML = holidayArr[i].description;
-//                        holiEle.appendChild(holiData);
-//                        tableEle.appendChild(holiEle);
-//                    }
-//                    console.log(this.result.holidays.length);
-//                });
-//        }, // end search
-//    } // end methods
-//});
-
 
 function searchButtonClicked(e) {
     console.log("searchButtonClicked() called");
@@ -125,15 +84,15 @@ function getRandomInt(min, max) {
 }
 
 function getDateFromTimeStamp(UNIX_timestamp) {
-    var a = new Date(UNIX_timestamp);
-    var months = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'];
-    var year = a.getFullYear();
-    var month = a.getMonth()+1;
-    var date = a.getDate();
-    var hour = a.getHours()+1;
-    var min = a.getMinutes()+1;
-    var sec = a.getSeconds()+1;
-    var time = [month, date, year];
+    let a = new Date(UNIX_timestamp);
+    let months = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'];
+    let year = a.getFullYear();
+    let month = a.getMonth()+1;
+    let date = a.getDate();
+    let hour = a.getHours()+1;
+    let min = a.getMinutes()+1;
+    let sec = a.getSeconds()+1;
+    let time = [month, date, year];
     return time;
 
 }
