@@ -98,7 +98,7 @@ function getDateFromTimeStamp(UNIX_timestamp) {
 }
 
 function xhrRequest(url,callback) {
-    // 1 - create a new XHR object
+    // 1 - create a new XHR object :)
     let xhr = new XMLHttpRequest();
 
     // 2 - set the onload handler
