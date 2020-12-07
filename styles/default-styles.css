@@ -1,5 +1,14 @@
 @import url(https://fonts.googleapis.com/css?family=Open+Sans);
 
+@font-face {
+    font-family: 'Friz-Quadrata-Regular';
+    src: url('fonts/on-air-inline-webfont.eot');
+    src: url('https://people.rit.edu/cal7114/330/projects/Lear_P3Final/fonts/Friz-Quadrata-Font/Regular.ttf') format('truetype');
+    font-weight: normal;
+    font-style: normal;
+}
+
+
 h1 {
     font-size: 4rem;
     margin: 2rem;
@@ -132,8 +141,7 @@ button:hover{
 }
 
 button {
-    width: 3rem;
-    height: 3rem;
+    width: 4.5rem;
     background-color: rgba(0, 0, 0, .5);
     border: none;
     outline: none;

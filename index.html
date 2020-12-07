@@ -39,15 +39,23 @@
             <div id='buttons'>
                 <p id="errorMessage"></p>
                 <input placeholder="Enter your summoner name" v-model="summonerInfo.sn">
+
                 <select id="regionDropdown" v-model="summonerInfo.region">
                     <option v-for="r in regions" v-bind:regions="r">{{r}}</option>
                 </select>
+
+                <select id="regionDropdown" v-model="sortType">
+                    <option v-for="s in sortTypes" v-bind:sortTypes="s">{{s}}</option>
+                </select>
+
                 <button id="searchButton" type="submit" @click='searchClicked' @hover='searchHover'>
                     <span class="swap-on-hover">
-                        <img class="swap-on-hover__front-image" src="images/searchicon.png" alt="Search icon looks like a magnifying glass"/>
-                        <img class="swap-on-hover__back-image" src="images/searchiconfocus.png" alt="Search icon looks like a magnifying glass. When hovered, changes color"/>
+                        <img class="swap-on-hover__front-image" src="images/searchicon.png" alt="Search icon looks like a magnifying glass" />
+                        <img class="swap-on-hover__back-image" src="images/searchiconfocus.png" alt="Search icon looks like a magnifying glass. When hovered, changes color" />
                     </span>
                 </button>
+                <button @click = 'clearClicked'>Reset</button>
+
             </div>
             <div class="loader"></div>
 

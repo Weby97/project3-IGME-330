@@ -9,19 +9,26 @@ let app = new Vue({
     data: {
         title: "What Champion Should You Play?",
         regions: ["na1", "eun1", "euw1", "br1", "jp1", "kr", "la1", "la2", "oc1", "ru", "tr1"],
+        sortTypes: ["recommended", "highest mastery", "chest not yet aquired", "longest since played", ],
         videoNames: ['camile', 'kindred', 'xayah', 'warwick'],
         holidays: [],
         times: [],
         date: undefined,
         summonerInfo: {
-            sn: "AhrilyBadAhri",
+            sn: "",
             id: "",
             masteredChampions: [],
             region: "na1",
-
         },
+        sortType: 'recommended'
+
 
     },
+    mounted() {
+
+
+    },
+
     methods: {
 
         getRandomVideoUrl() {
@@ -36,8 +43,19 @@ let app = new Vue({
             let x = document.querySelector(".loader");
             x.style.display = "block";
 
+            localStorage.setItem('sortType', JSON.stringify(app.sortType))
+            localStorage.setItem('summonerInfo', JSON.stringify(app.summonerInfo))
+            console.log(app.summonerInfo)
+
             lol.getSummonerData(this.summonerInfo.sn, this.summonerInfo.region, summonerDataCallback);
 
+
+        },
+        clearClicked() {
+            localStorage.clear();
+            this.summonerInfo.sn = "";
+            this.summonerInfo.region = "na1";
+            this.sortType = "recommended";
 
         }
 
@@ -51,11 +69,9 @@ function summonerDataCallback(e) {
     console.log("summoner data fetched")
     let summonerData;
     //summoner data object --
-    try{
+    try {
         summonerData = JSON.parse(e.target.response)
-    }
-    catch(err)
-    {
+    } catch (err) {
         let x = document.querySelector(".loader");
         x.style.display = "none";
         document.querySelector("#errorMessage").innerHTML = "Invalid Name";
@@ -94,7 +110,7 @@ function summonerDataCallback(e) {
 
 //after all league of legends player data has been retrieved
 function summonerDataFinished() {
-            sortChampionList();
+    sortChampionList();
 
 
     //add a 'name' property to each mastered champion to use in the UI
@@ -105,13 +121,9 @@ function summonerDataFinished() {
 
     // The Calendar magic happens here
     //for (let i = 0; i < 5; i++) {
-    //      let time = utils.getDateFromTimeStamp(app.summonerInfo.masteredChampions[i].lastPlayTime);
+    //let time = utils.getDateFromTimeStamp(app.summonerInfo.masteredChampions[i].lastPlayTime);
 
-<<<<<<< HEAD
     app.date = app.summonerInfo.masteredChampions[0].lastPlayDate;
-=======
-    app.date = app.summonerInfo.masteredChampions[1].lastPlayDate;
->>>>>>> origin/main
 
 
     //}
@@ -124,46 +136,29 @@ function summonerDataFinished() {
 
 function calendarDataCallback(e) {
     console.log("calendar data fetched");
-<<<<<<< HEAD
 
-=======
     let x = document.querySelector(".loader");
     x.style.display = "none";
->>>>>>> origin/main
     let obj = JSON.parse(e.target.response);
 
-    console.log(app.date);
-    console.log(obj);
-    console.log(obj.response);
-    console.log(obj.response.holidays);
+    console.log(obj)
 
     let holiday = obj.response.holidays[0];
 
-    console.log(holiday)
+   // if(!holiday) return;
 
-<<<<<<< HEAD
-=======
-    if (holiday === undefined) {
-        let date = app.times[0]
-        app.summonerInfo.masteredChampions[1].holiday = `The last time you played this champion, it was: ${date[0]} / ${date[1]} / ${date[2]}`;
-    } else {
-        app.summonerInfo.masteredChampions[1].holiday = `The last time you played this champion, it was: ${holiday.name}`;
-    }
->>>>>>> origin/main
 
     let champName = app.summonerInfo.masteredChampions[0].name;
 
-<<<<<<< HEAD
-    if (holiday === undefined) {
-        let date = app.times[0]
-        app.summonerInfo.masteredChampions[0].holiday = `The last time you played ${champName}, it was: ${date[0]} / ${date[1]} / ${date[2]}`;
+    if (!holiday) {
+        let date = app.date
+        console.log(date);
+
+        app.summonerInfo.masteredChampions[0].holiday = `The last time you played ${champName}, it was: ${date["0"]} / ${date["1"]} / ${date["2"]}`;
     } else {
         app.summonerInfo.masteredChampions[0].holiday = `The last time you played ${champName}, it was: ${holiday.name}`;
     }
 
-
-=======
->>>>>>> origin/main
     storeData();
 
 }
@@ -172,7 +167,7 @@ function calendarDataCallback(e) {
 function storeData() {
 
     let holidayArray = app.holidays;
-    console.log(holidayArray[0]);
+
 
 
 
@@ -194,9 +189,20 @@ function storeData() {
 
 function sortChampionList() {
 
+
+    let sortProtocol = app.sortType;
+
     let champions = app.summonerInfo.masteredChampions;
-    champions.sort(byChestGranted)
-    champions.sort(byLastPlayed)
+
+    if (sortProtocol == 'recommended') {
+        champions.sort(byChestGranted)
+        champions.sort(byLastPlayed)
+    }else if (sortProtocol == 'chest not yet aquired'){
+        champions.sort(byChestGranted)
+
+    }else if(sortProtocol == 'longest since played'){
+        champions.sort(byLastPlayed)
+    }
 
     function byChestGranted(a, b) {
         if (a.chestGranted) {
@@ -207,23 +213,51 @@ function sortChampionList() {
         }
         // a must be equal to b
         return 0;
-    } function byLastPlayed(a, b) {
-        if (a.lastPlayTime<b.lastPlayTime) {
+    }
+
+    function byLastPlayed(a, b) {
+        if (a.lastPlayTime < b.lastPlayTime) {
             return -1;
         }
-        if (a.lastPlayTime>b.lastPlayTime) {
+        if (a.lastPlayTime > b.lastPlayTime) {
             return 1;
         }
         // a must be equal to b
         return 0;
     }
 
-app.summonerInfo.masteredChampions = champions;
+    app.summonerInfo.masteredChampions = champions;
     console.log(app.summonerInfo.masteredChampions)
 
 }
 
 function init() {
+
+
+    let lastSummonerInfo = localStorage.getItem('summonerInfo');
+    if (lastSummonerInfo != undefined) {
+        app.summonerInfo = JSON.parse(lastSummonerInfo);
+    } else {
+
+        app.summonerInfo = {
+            sn: "",
+            id: "",
+            masteredChampions: [],
+            region: "na1",
+
+
+        }
+    }
+
+    let lastSortType = localStorage.getItem('sortType');
+
+    if (lastSortType != undefined) {
+        app.sortType = JSON.parse(lastSortType);
+    } else {
+        app.sortType = 'recommended'
+
+    }
+
 
     //set background
     let videoUrls = ['camile', 'kindred', 'xayah', 'warwick']
