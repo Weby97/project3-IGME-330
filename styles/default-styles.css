@@ -198,6 +198,7 @@ button:focus {
   opacity: 0;
 }
 
+/* https://www.w3schools.com/howto/howto_css_loader.asp */
 .loader {
     display: none;
     margin-left:auto;
