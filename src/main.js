@@ -136,7 +136,6 @@ function calendarDataCallback(e) {
         app.summonerInfo.masteredChampions[1].holiday = `The last time you played this champion, it was: ${holiday.name}`;
     }
 
-
     storeData();
 
 }
