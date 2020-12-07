@@ -1,5 +1,3 @@
-import * as lol from './lol.js'
-
 function dataError(e) {
     //console.log("An error occurred");
 }
@@ -10,15 +8,15 @@ function getRandomInt(min, max) {
 
 function getDateFromTimeStamp(UNIX_timestamp) {
 
-    let months = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'];
+    //let months = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'];
     let a = new Date(UNIX_timestamp);
 
     let year = a.getFullYear();
     let month = a.getMonth()+1;
     let date = a.getDate();
-    let hour = a.getHours()+1;
-    let min = a.getMinutes()+1;
-    let sec = a.getSeconds()+1;
+    // let hour = a.getHours()+1;
+    // let min = a.getMinutes()+1;
+    // let sec = a.getSeconds()+1;
     let time = [month, date, year];
     return time;
 
