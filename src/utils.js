@@ -8,10 +8,6 @@ let day = 14
 let year = 2019
 let month = 3
 
-<<<<<<< HEAD
-
-=======
->>>>>>> origin/main
 function searchButtonClicked(e) {
     console.log("searchButtonClicked() called");
     if (e.target.id == "search") {
@@ -82,13 +78,10 @@ function getRandomInt(min, max) {
 }
 
 function getDateFromTimeStamp(UNIX_timestamp) {
-<<<<<<< HEAD
+
     let months = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'];
     let a = new Date(UNIX_timestamp);
-=======
-    let a = new Date(UNIX_timestamp);
-    let months = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'];
->>>>>>> origin/main
+
     let year = a.getFullYear();
     let month = a.getMonth()+1;
     let date = a.getDate();
